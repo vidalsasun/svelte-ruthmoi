@@ -12,4 +12,5 @@
 		<a class="btn variant-filled-tertiary" href="https://github.com/">GitHub</a>
 	</section>
 </div>
+
 <Avatar src="https://i.pravatar.cc/" />
