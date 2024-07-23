@@ -10,57 +10,57 @@
 </script>
 
 <div class="container h-full mx-auto flex justify-center items-center">
-	<div class="space-y-10 text-center flex flex-col items-center">
+	<div class="text-center flex flex-col items-center">
 		<div class="row row-1">
-			<div class="col"><enhanced:img alt="SEXANDPSICO" src={row1left} /></div>
-			<div class="col"><enhanced:img alt="SEXANDPSICO" src={row1right} /></div>
+			<div class="col"><enhanced:img class="rounded-corners" alt="SEXANDPSICO" src={row1left} /></div>
+			<div class="col"><enhanced:img class="rounded-corners" alt="SEXANDPSICO" src={row1right} /></div>
 		  </div>
 		
 		  <!-- Row 2 -->
 		  <div class="row row-2">
-			<div class="col" style="background-color: #e5cac6;"><h1>COMPRENDE Y DISFRUTA TU PERSONALIDAD SEXUAL</h1></div>
+			<div class="col rounded-corners" style="background-color: #e5cac6;"><h1>COMPRENDE Y DISFRUTA TU PERSONALIDAD SEXUAL</h1></div>
 			<div class="col col-2">
-			  <div class="sub-col"><enhanced:img alt="SEXANDPSICO" src={row2right1} /></div>
-			  <div class="sub-col"><enhanced:img alt="SEXANDPSICO" src={row2right2} /></div>
-			  <div class="sub-col"><enhanced:img alt="SEXANDPSICO" src={row2right3} /></div>
+			  <div class="sub-col"><enhanced:img class="rounded-corners img-top-height" alt="SEXANDPSICO" src={row2right1} /></div>
+			  <div class="sub-col"><enhanced:img class="rounded-corners img-top-height" alt="SEXANDPSICO" src={row2right2} /></div>
+			  <div class="sub-col"><enhanced:img class="rounded-corners img-top-height" alt="SEXANDPSICO" src={row2right3} /></div>
 			</div>
 		  </div>
 		
 		  <!-- Row 3 -->
 		  <div class="row row-3">
-			<div class="col"><enhanced:img alt="SEXANDPSICO" src={row31} /></div>
-			<div class="col"><enhanced:img alt="SEXANDPSICO" src={row32} /></div>
-			<div class="col"><enhanced:img alt="SEXANDPSICO" src={row33} /></div>
+			<div class="col"><enhanced:img class="rounded-corners img-top-height" alt="SEXANDPSICO" src={row31} /></div>
+			<div class="col"><enhanced:img class="rounded-corners img-top-height" alt="SEXANDPSICO" src={row32} /></div>
+			<div class="col"><enhanced:img class="rounded-corners img-top-height" alt="SEXANDPSICO" src={row33} /></div>
 		  </div>
 		
 		  <!-- Row 4 -->
 		  <div class="row row-4">
-			<div class="col"><enhanced:img alt="SEXANDPSICO" src={row2right1} /></div>
-			<div class="col"><enhanced:img alt="SEXANDPSICO" src={row2right1} /></div>
-			<div class="col"><enhanced:img alt="SEXANDPSICO" src={row2right1} /></div>
+			<div class="col"><enhanced:img class="rounded-corners" alt="SEXANDPSICO" src={row2right1} /></div>
+			<div class="col"><enhanced:img class="rounded-corners" alt="SEXANDPSICO" src={row2right1} /></div>
+			<div class="col"><enhanced:img class="rounded-corners" alt="SEXANDPSICO" src={row2right1} /></div>
 		  </div>
 		
 		  <!-- Row 5 -->
 		  <div class="row">
-			<div class="col"><enhanced:img alt="SEXANDPSICO" src={row2right1} /></div>
+			<div class="col"><enhanced:img class="rounded-corners" alt="SEXANDPSICO" src={row2right1} /></div>
 		  </div>
 		
 		  <!-- Row 6 -->
 		  <div class="row row-6">
-			<div class="col"><enhanced:img alt="SEXANDPSICO" src={row2right1} /></div>
-			<div class="col"><enhanced:img alt="SEXANDPSICO" src={row2right1} /></div>
+			<div class="col"><enhanced:img class="rounded-corners" alt="SEXANDPSICO" src={row2right1} /></div>
+			<div class="col"><enhanced:img class="rounded-corners" alt="SEXANDPSICO" src={row2right1} /></div>
 		  </div>
 		
 		  <!-- Row 7 -->
 		  <div class="row">
-			<div class="col"><enhanced:img alt="SEXANDPSICO" src={row2right1} /></div>
+			<div class="col"><enhanced:img class="rounded-corners" alt="SEXANDPSICO" src={row2right1} /></div>
 		  </div>
 		</div>
 	</div>
 
 
 <style lang="postcss">
-	    html, body {
+	html, body {
       height: 100%;
       margin: 0;
       display: flex;
@@ -68,7 +68,10 @@
       align-items: center;
       overflow: hidden;
     }
-  
+	.img-top-height
+	{
+		/*max-height: 550px;*/
+	}
     .container-wrapper {
       height: 80%; /* Ajusta la altura según tus necesidades */
       width: 80%; /* Ajusta el ancho según tus necesidades */
@@ -77,12 +80,10 @@
   
     .container {
       display: grid;
-      gap: 1rem;
     }
   
     .row {
       display: grid;
-      gap: 1rem;
     }
   
     .row-1,
@@ -126,6 +127,9 @@
 		@apply absolute z-[-1] rounded-full blur-[50px] transition-all;
 		animation: pulse 5s cubic-bezier(0, 0, 0, 0.5) infinite,
 			glow 5s linear infinite;
+	}
+	.rounded-corners {
+    	border-radius: 15px; /* Ajusta este valor según tus necesidades */
 	}
 	@keyframes glow {
 		0% {
