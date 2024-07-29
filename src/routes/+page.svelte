@@ -1,4 +1,7 @@
 <script lang="ts">
+	
+	import { base } from '$app/paths';
+
 	import { onMount } from 'svelte';
 	import gsap from 'gsap';
 	import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
@@ -102,7 +105,7 @@
 </script>
 
 <header>
-	<div><a href="/"><img alt="SEXANDPSICO" src={logo} class="invert-colors" style="width: 100%;"/></a></div>
+	<div><a href="{base}/"><img alt="SEXANDPSICO" src={logo} class="invert-colors" style="width: 100%;"/></a></div>
 </header>
 <section class="first">
 	<div class="outer">
