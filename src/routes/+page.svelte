@@ -105,7 +105,7 @@
 </script>
 
 <header>
-	<div><a href="{base}/"><img alt="SEXANDPSICO" src={logo} class="invert-colors" style="width: 100%;"/></a></div>
+	<div><a href="{base}/"><img alt="SEXANDPSICO" src={base}/{logo} class="invert-colors" style="width: 100%;"/></a></div>
 </header>
 <section class="first">
 	<div class="outer">
