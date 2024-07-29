@@ -6,7 +6,7 @@
 	import gsap from 'gsap';
 	import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 	import { Observer } from 'gsap/dist/Observer';
-	import logo from 'nav-logo.png';
+	import logo from '../lib/assets/nav-logo.png';
 
 	if (typeof window !== 'undefined') {
 		gsap.registerPlugin(ScrollTrigger);
