@@ -16,7 +16,7 @@ const config = {
             // opciones del adaptador
             pages: 'build',
             assets: 'build',
-            fallback: null
+            fallback: '404.html'
         }),
 		paths: {
 			base: process.env.NODE_ENV === "production" ? "/sveltekit-gh-pages" : "",
