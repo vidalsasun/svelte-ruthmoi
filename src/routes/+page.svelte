@@ -19,7 +19,6 @@
 				return Array.from(element.querySelectorAll('span'));
 			});
 		}
-
 		onMount(() => {
 			const ctx: gsap.Context = gsap.context(() => {
 				let sections = document.querySelectorAll('section'),
