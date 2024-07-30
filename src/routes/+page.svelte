@@ -30,8 +30,8 @@
 					if (tl.reversed()) {
 						tl.play();
 					} else {
-						tl.to('nav', { right: 0 })
-							.to('nav', { height: '100vh' }, '-=.1')
+						tl.to('nav', { right: '8px' })
+							.to('nav', { height: '97vh' }, '-=.1')
 							.to('nav ul li a', { opacity: 1, pointerEvents: 'all', stagger: 0.2 }, '-=.8')
 							.to('.close', { opacity: 1, pointerEvents: 'all' }, '-=.8')
 							.to('nav h2', { opacity: 1 }, '-=1');
@@ -431,7 +431,7 @@
 		background: #9e827d;
 		top: 0vh;
 		display: flex;
-		justify-content: center;
+		/*justify-content: center;*/
 		align-items: center;
 		right: -200vw;
 	}
