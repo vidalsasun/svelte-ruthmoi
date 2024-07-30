@@ -119,7 +119,7 @@
 	<div class="outer">
 		<div class="inner">
 			<div class="bg">
-				<h1 class="section-heading">VIVE UNA VIDA ORGÁSMICA</h1>
+				<h2 class="section-heading">VIVE UNA VIDA ORGÁSMICA</h2>
 			</div>
 		</div>
 	</div>
@@ -127,9 +127,12 @@
 <section class="third">
 	<div class="outer">
 		<div class="inner">
-			<div class="bg">
+			<!-- <div class="bg">
 				<h5 class="section-heading">DESNUDA TUS VERDADEROS DESEOS</h5>
-				<h1 class="section-heading">DESCUBRE, COMPRENDE Y DISFRUTA TU PERSONALIDAD SEXUAL </h1>
+			</div> -->
+
+			<div class="bg">
+				<h2 style="color: #000" class="section-heading">DESCUBRE, COMPRENDE Y DISFRUTA TU PERSONALIDAD SEXUAL</h2>
 			</div>
 		</div>
 	</div>
@@ -138,7 +141,7 @@
 	<div class="outer">
 		<div class="inner">
 			<div class="bg">
-				<h1 class="section-heading">COMPRENDE LO QUE TE GUSTA DE VERDAD Y REDIMENSIONA TU PLACER DENTRO Y FUERA DE LA CAMA</h1>
+				<h2 style="color: #fff" class="section-heading">COMPRENDE LO QUE TE GUSTA DE VERDAD Y REDIMENSIONA TU PLACER DENTRO Y FUERA DE LA CAMA</h2>
 			</div>
 		</div>
 	</div>
@@ -147,7 +150,7 @@
 	<div class="outer">
 		<div class="inner">
 			<div class="bg">
-				<h1 class="section-heading">POTENCIA TU DESEO Y DESCUBRE UNA VIDA SEXUAL MAS CENTRADA EN EL PLACER</h1>
+				<h2 style="color: #fff" class="section-heading">POTENCIA TU DESEO Y DESCUBRE UNA VIDA SEXUAL MAS CENTRADA EN EL PLACER</h2>
 			</div>
 		</div>
 	</div>
