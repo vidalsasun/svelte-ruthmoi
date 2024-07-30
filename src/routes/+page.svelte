@@ -96,6 +96,12 @@
 					tolerance: 10,
 					preventDefault: true
 				});
+				// Desplazamiento automático cada 5 segundos
+				setInterval(() => {
+                    if (!animating) {
+                        gotoSection(currentIndex + 1, 1);
+                    }
+                }, 6000);
 
 				gotoSection(0, 1);
 			});
@@ -197,7 +203,7 @@
 		font-size: clamp(1rem, 5vw, 5rem);
 		font-weight: 400;
 		text-align: center;
-		letter-spacing: 0.5em;
+		letter-spacing: 0.2em;
 		margin-right: -0.5em;
 		color: hsl(0, 0%, 80%);
 		width: 90vw;
