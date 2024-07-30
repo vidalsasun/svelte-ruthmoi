@@ -6,7 +6,6 @@
 	import gsap from 'gsap';
 	import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 	import { Observer } from 'gsap/dist/Observer';
-	import logo from '$lib/assets/nav-logo.png';
 
 	if (typeof window !== 'undefined') {
 		gsap.registerPlugin(ScrollTrigger);
@@ -105,7 +104,7 @@
 </script>
 
 <header>
-	<div><a href="{base}/"><img alt="SEXANDPSICO" src={logo} class="invert-colors" style="width: 100%;"/></a></div>
+	<div><a href="{base}/"><img alt="SEXANDPSICO" src="nav-logo.png" class="invert-colors" style="width: 100%;"/></a></div>
 </header>
 <section class="first">
 	<div class="outer">
@@ -152,6 +151,17 @@
 		</div>
 	</div>
 </section>
+
+<section class="sixth">
+	<div class="outer">
+		<div class="inner">
+			<div class="bg">
+				<h2 class="section-heading">Keep scrolling</h2>
+			</div>
+		</div>
+	</div>
+</section>
+
 
 <style lang="scss">
 	@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
@@ -253,25 +263,32 @@
 
 	.third {
 		.bg {
-			background-image: $bg-gradient, url('$lib/assets/content/red-purse_960.jpg');
+			/*background-image: $bg-gradient, url('$lib/assets/content/red-purse_960.jpg');*/
+			background-color: #e5cac6;
 		}
 	}
 
 	.fourth {
 		.bg {
 			background-image: $bg-gradient,
-				url(https://images.unsplash.com/photo-1617412327653-c29093585207?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTYxNzU2MDgzMQ&ixlib=rb-1.2.1&q=75&w=1920);
+				url('$lib/assets/content/red-purse_960.jpg');
 		}
 	}
 
 	.fifth {
 		.bg {
 			background-image: $bg-gradient,
-				url('https://images.unsplash.com/photo-1617141636403-f511e2d5dc17?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTYxODAzMjc4Mw&ixlib=rb-1.2.1&q=75w=1920');
+				url('$lib/assets/content/lips-letters_960.jpg');
 			background-position: 50% 45%;
 		}
 	}
-
+	.sixth {
+		.bg {
+			background-image: $bg-gradient,
+				url('$lib/assets/content/pizza-girls_960.jpg');
+			background-position: 50% 45%;
+		}
+	}
 	h2 * {
 		will-change: transform;
 	}
