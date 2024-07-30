@@ -1,5 +1,4 @@
 <script lang="ts">
-	
 	import { base } from '$app/paths';
 
 	import { onMount } from 'svelte';
@@ -23,7 +22,6 @@
 		}
 		onMount(() => {
 			const ctx: gsap.Context = gsap.context(() => {
-
 				//NAVBAR
 				const open = document.querySelector('.container');
 				const close = document.querySelector('.close');
@@ -34,8 +32,8 @@
 					} else {
 						tl.to('nav', { right: 0 })
 							.to('nav', { height: '100vh' }, '-=.1')
-							.to('nav ul li a', { opacity: 1, pointerEvents: 'all', stagger: .2 }, '-=.8')
-							.to('.close', { opacity: 1, pointerEvents: 'all' }, "-=.8")
+							.to('nav ul li a', { opacity: 1, pointerEvents: 'all', stagger: 0.2 }, '-=.8')
+							.to('.close', { opacity: 1, pointerEvents: 'all' }, '-=.8')
 							.to('nav h2', { opacity: 1 }, '-=1');
 					}
 				});
@@ -45,7 +43,7 @@
 				});
 				////////////////
 
-
+				// CONTENT SCROLL
 				let sections = document.querySelectorAll('section'),
 					images = document.querySelectorAll('.bg'),
 					headings = gsap.utils.toArray<HTMLElement>('.section-heading'),
@@ -121,27 +119,39 @@
 				});
 				// Desplazamiento automático cada 5 segundos
 				setInterval(() => {
-                    if (!animating) {
-                        gotoSection(currentIndex + 1, 1);
-                    }
-                }, 6000);
+					if (!animating) {
+						gotoSection(currentIndex + 1, 1);
+					}
+				}, 6000);
 
 				gotoSection(0, 1);
+				//////////
+				// Animación del footer
+				const footerItems = document.querySelectorAll('.footer-item');
+				gsap.to(footerItems, {
+					xPercent: -100,
+					duration: 3,
+					ease: 'none',
+					repeat: -1,
+					modifiers: {
+						xPercent: gsap.utils.wrap(-100, 100)
+					}
+				});
+				//////////
 			});
 		});
 	}
 </script>
 
-
-
-
 <header>
-	<div><a href="{base}/"><img alt="SEXANDPSICO" src="nav-logo.png" class="invert-colors" style="width: 88%;"/></a></div>
-
+	<div>
+		<a href="{base}/"
+			><img alt="SEXANDPSICO" src="nav-logo.png" class="invert-colors" style="width: 88%;" /></a
+		>
+	</div>
 	<div class="container">
 		<div class="bars"></div>
 	</div>
-	
 	<nav>
 		<div class="close">
 			<div></div>
@@ -154,14 +164,12 @@
 			<li><a href="#">CONTACTO</a></li>
 		</ul>
 	</nav>
-	
-
 </header>
 <section class="first">
 	<div class="outer">
 		<div class="inner">
 			<div class="bg one">
-				<h2 class="section-heading">DESLIZA</h2>
+				<h2 class="section-heading">BIENVENIDO</h2>
 			</div>
 		</div>
 	</div>
@@ -183,7 +191,9 @@
 			</div> -->
 
 			<div class="bg">
-				<h2 style="color: #000" class="section-heading">DESCUBRE, COMPRENDE Y DISFRUTA TU PERSONALIDAD SEXUAL</h2>
+				<h2 style="color: #000" class="section-heading">
+					DESCUBRE, COMPRENDE Y DISFRUTA TU PERSONALIDAD SEXUAL
+				</h2>
 			</div>
 		</div>
 	</div>
@@ -192,7 +202,9 @@
 	<div class="outer">
 		<div class="inner">
 			<div class="bg">
-				<h2 style="color: #fff" class="section-heading">COMPRENDE LO QUE TE GUSTA DE VERDAD Y REDIMENSIONA TU PLACER DENTRO Y FUERA DE LA CAMA</h2>
+				<h2 style="color: #fff" class="section-heading">
+					COMPRENDE LO QUE TE GUSTA DE VERDAD Y REDIMENSIONA TU PLACER DENTRO Y FUERA DE LA CAMA
+				</h2>
 			</div>
 		</div>
 	</div>
@@ -201,7 +213,9 @@
 	<div class="outer">
 		<div class="inner">
 			<div class="bg">
-				<h2 style="color: #fff" class="section-heading">POTENCIA TU DESEO Y DESCUBRE UNA VIDA SEXUAL MAS CENTRADA EN EL PLACER</h2>
+				<h2 style="color: #fff" class="section-heading">
+					POTENCIA TU DESEO Y DESCUBRE UNA VIDA SEXUAL MAS CENTRADA EN EL PLACER
+				</h2>
 			</div>
 		</div>
 	</div>
@@ -211,14 +225,39 @@
 	<div class="outer">
 		<div class="inner">
 			<div class="bg">
-				<h2 class="section-heading">DISFRUTA DEL SEXO DESDE TU REALIDAD Y OLVÍDATE DE LOS ESTEREOTIPOS IMPUESTOS</h2>
+				<h2 class="section-heading">
+					DISFRUTA DEL SEXO DESDE TU REALIDAD Y OLVÍDATE DE LOS ESTEREOTIPOS IMPUESTOS
+				</h2>
 			</div>
 		</div>
 	</div>
 </section>
 
+<!-- <footer>
+	<div class="footer-content">
+		<div class="footer-item">
+			<img alt="SEXANDPSICO" src="nav-logo.png" class="invert-colors" style="width: 88%;" />
+		</div>
+		<div class="footer-item">
+			<p>Texto de ejemplo en el footer</p>
+		</div>
+		<div class="footer-item">
+            <video src="$lib/assets/content/footer-video.mp4" autoplay muted loop></video>
+        </div>
+		<div class="footer-item">
+			<img alt="SEXANDPSICO" src="nav-logo.png" class="invert-colors" style="width: 88%;" />
+		</div>
+		<div class="footer-item">
+			<p>Otro texto de ejemplo en el footer</p>
+		</div>
+		<div class="footer-item">
+            <video src="$lib/assets/content/footer-video2.mp4" autoplay muted loop></video>
+        </div>
+	</div>
+</footer> -->
 
 <style lang="scss">
+	// SCROLL CONTENT
 	@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 	@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap');
 
@@ -325,28 +364,26 @@
 
 	.fourth {
 		.bg {
-			background-image: $bg-gradient,
-				url('$lib/assets/content/red-purse_960.jpg');
+			background-image: $bg-gradient, url('$lib/assets/content/red-purse_960.jpg');
 		}
 	}
 
 	.fifth {
 		.bg {
-			background-image: $bg-gradient,
-				url('$lib/assets/content/lips-letters_960.jpg');
+			background-image: $bg-gradient, url('$lib/assets/content/lips-letters_960.jpg');
 			background-position: 50% 45%;
 		}
 	}
 	.sixth {
 		.bg {
-			background-image: $bg-gradient,
-				url('$lib/assets/content/pizza-girls_960.jpg');
+			background-image: $bg-gradient, url('$lib/assets/content/pizza-girls_960.jpg');
 			background-position: 50% 45%;
 		}
 	}
 	h2 * {
 		will-change: transform;
 	}
+	///////////
 
 	//CUSTOM
 	.invert-colors {
@@ -354,154 +391,170 @@
 	}
 	//CUSTOM
 
+	//NAVBAR
+	.container {
+		cursor: pointer;
+		position: absolute;
+		right: 5%;
+		width: 30px;
+		height: 20px;
+	}
 
-	* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-}
+	.bars {
+		width: 30px;
+		height: 4px;
+		background: #000;
+	}
 
-body {
-	font-family: "Montserrat", sans-serif;
-	background: #e9e9e9;
-	width: 100%;
-	min-height: 100vh;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	overflow: hidden;
-}
+	.bars::before,
+	.bars::after {
+		content: '';
+		position: absolute;
+		width: 30px;
+		height: 4px;
+		background: #fff;
+	}
 
-h1 {
-	font-size: 40px;
-  text-align: center;
-}
+	.bars::before {
+		margin-top: 9px;
+	}
 
-.container{
-	cursor: pointer;
-	position: absolute;
-	right: 5%;
-	width: 30px;
-	height: 20px;
-}
+	.bars::after {
+		margin-top: 18px;
+	}
 
-.bars{
-	width: 30px;
-	height: 4px;
-	background: #000;
-}
+	nav {
+		position: absolute;
+		width: 100%;
+		height: 30px;
+		background: #9e827d;
+		top: 0vh;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		right: -200vw;
+	}
 
-.bars::before,
-.bars::after{
-	content: '';
-	position: absolute;
-	width: 30px;
-	height: 4px;
-	background: #fff;
-}
+	nav ul {
+		list-style: none;
+	}
 
-.bars::before{
-	margin-top: 9px;
-}
+	nav ul li {
+		margin: 50px 0;
+	}
 
-.bars::after{
-	margin-top: 18px;
-}
+	nav ul li a {
+		color: #fafafa;
+		font-size: 2em;
+		text-decoration: none;
+		font-weight: 500;
+		position: relative;
+		opacity: 0;
+		pointer-events: none;
+	}
 
-nav{
-	position: absolute;
-	width: 100%;
-	height: 30px;
-	background: #9e827d;
-	top:0vh;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	right: -200vw;
-}
+	nav ul li a:after {
+		content: '';
+		width: 100%;
+		position: absolute;
+		height: 3px;
+		border-radius: 5px;
+		background: #fff;
+		bottom: -10px;
+		left: 0;
+		transform-origin: left;
+		transition: transform 0.5s ease;
+		transform: scaleX(0);
+	}
 
-nav ul {
-	list-style: none;
-}
+	nav ul li a:hover:after {
+		transform: scaleX(1);
+	}
 
-nav ul li{
-	margin: 50px 0;
-}
+	nav .close {
+		width: 30px;
+		height: 30px;
+		position: absolute;
+		right: 5%;
+		cursor: pointer;
+		opacity: 0;
+		pointer-events: none;
+	}
 
-nav ul li a{
-	color: #fafafa;
-	font-size: 2em;
-	text-decoration: none;
-	font-weight: 500;
-	position: relative;
-	opacity: 0;
-	pointer-events: none;
-}
+	nav h2 {
+		position: absolute;
+		left: 5%;
+		opacity: 0;
+		pointer-events: none;
+		color: #fff;
+		font-size: 2em;
+	}
 
-nav ul li a:after{
-	content: '';
-	width: 100%;
-	position: absolute;
-	height: 3px;
-	border-radius: 5px;
-	background: #fff;
-	bottom: -10px;
-	left: 0;
-	transform-origin: left;
-	transition: transform .5s ease;
-	transform: scaleX(0);
-}
+	nav .close div::before,
+	nav .close div::after {
+		content: '';
+		position: absolute;
+		width: 30px;
+		height: 4px;
+		background: #fff;
+		transition: background 0.5s ease;
+	}
+	nav .close div::before {
+		transform: rotate(-45deg);
+	}
 
+	nav .close div::after {
+		transform: rotate(45deg);
+	}
 
-nav ul li a:hover:after{
-	transform: scaleX(1);
-}
+	nav .close:hover div::before,
+	nav .close:hover div::after {
+		background: #000;
+	}
 
-nav .close {
-	width: 30px;
-	height: 30px;
-	position: absolute;
-	right: 5%;
-	cursor: pointer;
-	opacity: 0;
-	pointer-events: none;
-}
+	@media (max-width: 992px) {
+		h1 {
+			font-size: 25px;
+		}
+	}
+	///////////////////
+	// FOOTER
+	footer {
+		position: fixed;
+		bottom: 0;
+		width: 100%;
+		height: 7em;
+		background-color: black;
+		overflow: hidden;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		z-index: 3;
+	}
 
-nav h2{
-	position: absolute;
-	left: 5%;
-	opacity: 0;
-	pointer-events: none;
-	color: #fff;
-	font-size: 2em;
-}
+	.footer-content {
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+		width: 100%;
+		height: 100%;
+		white-space: nowrap;
+	}
 
-nav .close div::before,
-nav .close div::after{
-	content: '';
-	position: absolute;
-	width: 30px;
-	height: 4px;
-	background: #fff;
-	transition: background .5s ease;
-}
-nav .close div::before{
-	transform: rotate(-45deg);
-}
+	.footer-item {
+		display: inline-block;
+		margin: 0 2em;
+	}
 
-nav .close div::after{
-	transform: rotate(45deg);
-}
+	.footer-item img,
+	.footer-item video {
+		height: 8em;
+	}
 
-nav .close:hover div::before,
-nav .close:hover div::after{
-	background: #000;
-}
-
-@media (max-width: 992px){
-  h1{
-    font-size: 25px;
-  }
-}
-
+	.footer-item p {
+		color: white;
+		font-size: 1.5em;
+		font-family: 'Cormorant Garamond', serif;
+	}
+	///////////////////
 </style>
