@@ -23,6 +23,29 @@
 		}
 		onMount(() => {
 			const ctx: gsap.Context = gsap.context(() => {
+
+				//NAVBAR
+				const open = document.querySelector('.container');
+				const close = document.querySelector('.close');
+				var tl = gsap.timeline({ defaults: { duration: 0.6, ease: 'expo.inOut' } });
+				open.addEventListener('click', () => {
+					if (tl.reversed()) {
+						tl.play();
+					} else {
+						tl.to('nav', { right: 0 })
+							.to('nav', { height: '100vh' }, '-=.1')
+							.to('nav ul li a', { opacity: 1, pointerEvents: 'all', stagger: .2 }, '-=.8')
+							.to('.close', { opacity: 1, pointerEvents: 'all' }, "-=.8")
+							.to('nav h2', { opacity: 1 }, '-=1');
+					}
+				});
+
+				close.addEventListener('click', () => {
+					tl.reverse();
+				});
+				////////////////
+
+
 				let sections = document.querySelectorAll('section'),
 					images = document.querySelectorAll('.bg'),
 					headings = gsap.utils.toArray<HTMLElement>('.section-heading'),
@@ -109,8 +132,30 @@
 	}
 </script>
 
+
+
+
 <header>
-	<div><a href="{base}/"><img alt="SEXANDPSICO" src="nav-logo.png" class="invert-colors" style="width: 100%;"/></a></div>
+	<div><a href="{base}/"><img alt="SEXANDPSICO" src="nav-logo.png" class="invert-colors" style="width: 88%;"/></a></div>
+
+	<div class="container">
+		<div class="bars"></div>
+	</div>
+	
+	<nav>
+		<div class="close">
+			<div></div>
+		</div>
+		<ul>
+			<li><a href="#">HOME</a></li>
+			<li><a href="#">PROCESO</a></li>
+			<li><a href="#">ESPACIOS</a></li>
+			<li><a href="#">HISTORIA</a></li>
+			<li><a href="#">CONTACTO</a></li>
+		</ul>
+	</nav>
+	
+
 </header>
 <section class="first">
 	<div class="outer">
@@ -308,4 +353,155 @@
 		filter: invert(100%) brightness(2) contrast(0.8);
 	}
 	//CUSTOM
+
+
+	* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: "Montserrat", sans-serif;
+	background: #e9e9e9;
+	width: 100%;
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+}
+
+h1 {
+	font-size: 40px;
+  text-align: center;
+}
+
+.container{
+	cursor: pointer;
+	position: absolute;
+	right: 5%;
+	width: 30px;
+	height: 20px;
+}
+
+.bars{
+	width: 30px;
+	height: 4px;
+	background: #000;
+}
+
+.bars::before,
+.bars::after{
+	content: '';
+	position: absolute;
+	width: 30px;
+	height: 4px;
+	background: #fff;
+}
+
+.bars::before{
+	margin-top: 9px;
+}
+
+.bars::after{
+	margin-top: 18px;
+}
+
+nav{
+	position: absolute;
+	width: 100%;
+	height: 30px;
+	background: #9e827d;
+	top:0vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	right: -200vw;
+}
+
+nav ul {
+	list-style: none;
+}
+
+nav ul li{
+	margin: 50px 0;
+}
+
+nav ul li a{
+	color: #fafafa;
+	font-size: 2em;
+	text-decoration: none;
+	font-weight: 500;
+	position: relative;
+	opacity: 0;
+	pointer-events: none;
+}
+
+nav ul li a:after{
+	content: '';
+	width: 100%;
+	position: absolute;
+	height: 3px;
+	border-radius: 5px;
+	background: #fff;
+	bottom: -10px;
+	left: 0;
+	transform-origin: left;
+	transition: transform .5s ease;
+	transform: scaleX(0);
+}
+
+
+nav ul li a:hover:after{
+	transform: scaleX(1);
+}
+
+nav .close {
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	right: 5%;
+	cursor: pointer;
+	opacity: 0;
+	pointer-events: none;
+}
+
+nav h2{
+	position: absolute;
+	left: 5%;
+	opacity: 0;
+	pointer-events: none;
+	color: #fff;
+	font-size: 2em;
+}
+
+nav .close div::before,
+nav .close div::after{
+	content: '';
+	position: absolute;
+	width: 30px;
+	height: 4px;
+	background: #fff;
+	transition: background .5s ease;
+}
+nav .close div::before{
+	transform: rotate(-45deg);
+}
+
+nav .close div::after{
+	transform: rotate(45deg);
+}
+
+nav .close:hover div::before,
+nav .close:hover div::after{
+	background: #000;
+}
+
+@media (max-width: 992px){
+  h1{
+    font-size: 25px;
+  }
+}
+
 </style>
