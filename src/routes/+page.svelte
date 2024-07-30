@@ -110,7 +110,7 @@
 	<div class="outer">
 		<div class="inner">
 			<div class="bg one">
-				<h2 class="section-heading">Desliza la pantalla</h2>
+				<h2 class="section-heading">DESLIZA</h2>
 			</div>
 		</div>
 	</div>
@@ -119,7 +119,7 @@
 	<div class="outer">
 		<div class="inner">
 			<div class="bg">
-				<h2 class="section-heading">Vive una vida orgásmica</h2>
+				<h1 class="section-heading">VIVE UNA VIDA ORGÁSMICA</h1>
 			</div>
 		</div>
 	</div>
@@ -128,7 +128,8 @@
 	<div class="outer">
 		<div class="inner">
 			<div class="bg">
-				<h2 class="section-heading">GreenSock</h2>
+				<h5 class="section-heading">DESNUDA TUS VERDADEROS DESEOS</h5>
+				<h1 class="section-heading">DESCUBRE, COMPRENDE Y DISFRUTA TU PERSONALIDAD SEXUAL </h1>
 			</div>
 		</div>
 	</div>
@@ -137,7 +138,7 @@
 	<div class="outer">
 		<div class="inner">
 			<div class="bg">
-				<h2 class="section-heading">Animation platform</h2>
+				<h1 class="section-heading">COMPRENDE LO QUE TE GUSTA DE VERDAD Y REDIMENSIONA TU PLACER DENTRO Y FUERA DE LA CAMA</h1>
 			</div>
 		</div>
 	</div>
@@ -146,7 +147,7 @@
 	<div class="outer">
 		<div class="inner">
 			<div class="bg">
-				<h2 class="section-heading">Keep scrolling</h2>
+				<h1 class="section-heading">POTENCIA TU DESEO Y DESCUBRE UNA VIDA SEXUAL MAS CENTRADA EN EL PLACER</h1>
 			</div>
 		</div>
 	</div>
@@ -156,7 +157,7 @@
 	<div class="outer">
 		<div class="inner">
 			<div class="bg">
-				<h2 class="section-heading">Keep scrolling</h2>
+				<h2 class="section-heading">DISFRUTA DEL SEXO DESDE TU REALIDAD Y OLVÍDATE DE LOS ESTEREOTIPOS IMPUESTOS</h2>
 			</div>
 		</div>
 	</div>
