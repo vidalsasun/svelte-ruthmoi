@@ -147,7 +147,7 @@
 <header>
 	<div>
 		<a href="{base}/"
-			><img alt="SEXANDPSICO" src="nav-logo.png" class="invert-colors" style="width: 88%;" /></a
+			><img alt="SEXANDPSICO" src="nav-logo.png" class="invert-colors" style="width: 86%;" /></a
 		>
 	</div>
 	<div class="container">
@@ -158,11 +158,11 @@
 			<div></div>
 		</div>
 		<ul>
-			<li><a href="#">HOME</a></li>
-			<li><a href="#">PROCESO</a></li>
-			<li><a href="#">ESPACIOS</a></li>
-			<li><a href="#">HISTORIA</a></li>
-			<li><a href="#">CONTACTO</a></li>
+			<li><a href="/">HOME</a></li>
+			<li><a href="/proceso">PROCESO</a></li>
+			<li><a href="/espacios">ESPACIOS</a></li>
+			<li><a href="/historia">HISTORIA</a></li>
+			<li><a href="/contacto">CONTACTO</a></li>
 		</ul>
 	</nav>
 </header>
