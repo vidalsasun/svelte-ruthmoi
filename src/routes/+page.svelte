@@ -39,7 +39,7 @@
 				});
 
 				
-				close.addEventListener('click', () => {
+				close.addEventListener('click',=> {
 					tl.reverse();
 				});
 				////////////////
@@ -147,7 +147,11 @@
 <header>
 	<div>
 		<a href="{base}/"
-			><img alt="SEXANDPSICO" src="nav-logo.png" class="invert-colors" style="width: 86%;" /></a
+			><img alt="SEXANDPSICO" src="nav-logo.png" class="invert-colors" style="width: 88%;" /></a
+		>
+	</div>
+	<div class="container">
+		<div class="bars			><img alt="SEXANDPSICO" src="nav-logo.png" class="invert-colors" style="width: 86%;" /></a
 		>
 	</div>
 	<div class="container">
@@ -158,19 +162,11 @@
 			<div></div>
 		</div>
 		<ul>
-			<li><a href="/">HOME</a></li>
-			<li><a href="/proceso">PROCESO</a></li>
-			<li><a href="/espacios">ESPACIOS</a></li>
-			<li><a href="/historia">HISTORIA</a></li>
-			<li><a href="/contacto">CONTACTO</a></li>
-		</ul>
-	</nav>
-</header>
-<section class="first">
-	<div class="outer">
-		<div class="inner">
-			<div class="bg one">
-				<h2 class="section-heading">BIENVENIDO</h2>
+			<li><a href="{base}/">HOME</a></li>
+			<li><a href="{base}/proceso">PROCESO</a></li>
+			<li><a href="{base}/espacios">ESPACIOS</a></li>
+			<li><a href="{base}/historia">HISTORIA</a></li>
+			<li><a href="{base}/contacto">CONTACTO</a></li>
 			</div>
 		</div>
 	</div>
