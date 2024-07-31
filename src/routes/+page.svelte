@@ -37,9 +37,8 @@
 							.to('nav h2', { opacity: 1 }, '-=1');
 					}
 				});
-
 				
-				close.addEventListener('click',=> {
+				close.addEventListener('click', ()=> {
 					tl.reverse();
 				});
 				////////////////
@@ -146,12 +145,7 @@
 
 <header>
 	<div>
-		<a href="{base}/"
-			><img alt="SEXANDPSICO" src="nav-logo.png" class="invert-colors" style="width: 88%;" /></a
-		>
-	</div>
-	<div class="container">
-		<div class="bars			><img alt="SEXANDPSICO" src="nav-logo.png" class="invert-colors" style="width: 86%;" /></a
+		<a href="{base}/"><img alt="SEXANDPSICO" src="nav-logo.png" class="invert-colors" style="width: 88%;" /></a
 		>
 	</div>
 	<div class="container">
@@ -167,10 +161,9 @@
 			<li><a href="{base}/espacios">ESPACIOS</a></li>
 			<li><a href="{base}/historia">HISTORIA</a></li>
 			<li><a href="{base}/contacto">CONTACTO</a></li>
-			</div>
-		</div>
-	</div>
-</section>
+		</ul>
+	</nav>
+</header>
 <section class="second">
 	<div class="outer">
 		<div class="inner">
