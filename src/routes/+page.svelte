@@ -38,6 +38,7 @@
 					}
 				});
 
+				
 				close.addEventListener('click', () => {
 					tl.reverse();
 				});
