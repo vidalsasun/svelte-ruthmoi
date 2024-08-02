@@ -37,8 +37,8 @@
 							.to('nav h2', { opacity: 1 }, '-=1');
 					}
 				});
-				
-				close.addEventListener('click', ()=> {
+
+				close.addEventListener('click', () => {
 					tl.reverse();
 				});
 				////////////////
@@ -114,6 +114,7 @@
 					wheelSpeed: -1,
 					onDown: () => !animating && gotoSection(currentIndex - 1, -1),
 					onUp: () => !animating && gotoSection(currentIndex + 1, 1),
+					onClick: () => !animating && gotoSection(currentIndex + 1, 1),
 					tolerance: 10,
 					preventDefault: true
 				});
@@ -126,18 +127,33 @@
 
 				gotoSection(0, 1);
 				//////////
-				// Animación del footer
-				const footerItems = document.querySelectorAll('.footer-item');
-				gsap.to(footerItems, {
-					xPercent: -100,
-					duration: 3,
-					ease: 'none',
-					repeat: -1,
-					modifiers: {
-						xPercent: gsap.utils.wrap(-100, 100)
-					}
-				});
-				//////////
+
+				// Floating div news
+				const floatingDiv = document.querySelector('.floating-div');
+				const arrowUp = document.getElementById('arrow-up');
+				const arrowDown = document.getElementById('arrow-down');
+				const header = document.querySelector('header');
+
+				const showContent = () => {
+					//gsap.to(floatingDiv, { y: 0, duration: 0.5 });
+					gsap.to(floatingDiv, { height: '85vh', duration: 0.5 });
+					arrowUp.style.display = 'none';
+					arrowDown.style.display = 'block';
+				};
+
+				const hideContent = () => {
+					gsap.to(floatingDiv, { height: '25vh', duration: 0.5 });
+					arrowUp.style.display = 'block';
+					arrowDown.style.display = 'none';
+				};
+
+				arrowUp.addEventListener('click', showContent);
+				arrowDown.addEventListener('click', hideContent);
+
+				// Inicialmente, muestra solo la flecha hacia arriba
+				arrowDown.style.display = 'none';
+
+				/////////////////////////
 			});
 		});
 	}
@@ -145,7 +161,8 @@
 
 <header>
 	<div>
-		<a href="{base}/"><img alt="SEXANDPSICO" src="nav-logo.png" class="invert-colors" style="width: 88%;" /></a
+		<a href="{base}/">
+			<img alt="SEXANDPSICO" src="nav-logo.png" class="invert-colors" style="width: 88%;" /></a
 		>
 	</div>
 	<div class="container">
@@ -164,6 +181,7 @@
 		</ul>
 	</nav>
 </header>
+
 <section class="second">
 	<div class="outer">
 		<div class="inner">
@@ -223,28 +241,23 @@
 	</div>
 </section>
 
-<!-- <footer>
-	<div class="footer-content">
-		<div class="footer-item">
-			<img alt="SEXANDPSICO" src="nav-logo.png" class="invert-colors" style="width: 88%;" />
+<!-- FLOATING DIV NEWS-->
+
+<div class="floating-div">
+	<div class="floating-div-content">
+		<div class="arrow" id="arrow-up"><img src="arrow_up_icon.svg" alt="News up" /></div>
+		<div class="arrow" id="arrow-down"><img src="arrow_down_icon.svg" alt="News down" /></div>
+		<div class="news-content">
+			<!-- Aquí puedes añadir tus noticias, imágenes y videos -->
+			<p>Noticia 1</p>
+			<p>Noticia 2</p>
+			<!--             <img src="$lib/assets/content/news-image1.jpg" alt="News Image 1" />
+           <video src="$lib/assets/content/news-video.mp4" autoplay muted loop></video>-->
 		</div>
-		<div class="footer-item">
-			<p>Texto de ejemplo en el footer</p>
-		</div>
-		<div class="footer-item">
-            <video src="$lib/assets/content/footer-video.mp4" autoplay muted loop></video>
-        </div>
-		<div class="footer-item">
-			<img alt="SEXANDPSICO" src="nav-logo.png" class="invert-colors" style="width: 88%;" />
-		</div>
-		<div class="footer-item">
-			<p>Otro texto de ejemplo en el footer</p>
-		</div>
-		<div class="footer-item">
-            <video src="$lib/assets/content/footer-video2.mp4" autoplay muted loop></video>
-        </div>
 	</div>
-</footer> -->
+</div>
+
+<!---->
 
 <style lang="scss">
 	// SCROLL CONTENT
@@ -302,7 +315,7 @@
 		height: 100%;
 		width: 100%;
 		top: 0;
-		left:0;
+		left: 0;
 		position: fixed;
 		visibility: hidden;
 
@@ -509,43 +522,62 @@
 		}
 	}
 	///////////////////
-	// FOOTER
-	footer {
+	// FLOATING DIV NEWS
+	body {
+		margin: 0;
+		padding: 0;
+		height: 100vh;
+		color: white;
+		background: black;
+		font-family: 'Cormorant Garamond', serif;
+		text-transform: uppercase;
+	}
+
+	.floating-div {
 		position: fixed;
 		bottom: 0;
 		width: 100%;
-		height: 7em;
-		background-color: black;
-		overflow: hidden;
+		left: -1px;
+		border-radius: 4px;
+		height: 25vh;
+		background-color: rgba(0, 0, 0, 0.5);
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		z-index: 3;
+		z-index: 2;
+		@media (min-width: 768px) {
+			width: 25%;
+			left: 37.5%;
+		}
 	}
 
-	.footer-content {
-		display: flex;
-		align-items: center;
-		justify-content: space-around;
+	.floating-div-content {
 		width: 100%;
 		height: 100%;
-		white-space: nowrap;
+		overflow-y: auto;
+		text-align: center;
 	}
 
-	.footer-item {
-		display: inline-block;
-		margin: 0 2em;
-	}
-
-	.footer-item img,
-	.footer-item video {
-		height: 8em;
-	}
-
-	.footer-item p {
+	.arrow {
+		cursor: pointer;
+		font-size: 2em;
 		color: white;
-		font-size: 1.5em;
-		font-family: 'Cormorant Garamond', serif;
 	}
-	///////////////////
+
+	.news-content {
+		padding: 1em;
+	}
+
+	.news-content p,
+	.news-content img,
+	.news-content video {
+		margin: 1em 0;
+		max-width: 100%;
+	}
+
+	.news-content video {
+		width: 100%;
+		height: auto;
+	}
+	////////////
 </style>
