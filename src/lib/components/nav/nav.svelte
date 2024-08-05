@@ -49,7 +49,7 @@
 
 <header>
 	<div>
-		<a href="{base}/">
+		<a href="{base}/" class="logo-padding">
 			<img alt="SEXANDPSICO" src="../nav-logo.png" class="invert-colors" style="width: 88%;" /></a
 		>
 	</div>
@@ -212,7 +212,6 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		padding: 0 5%;
 		width: 100%;
 		z-index: 3;
 		height: 7em;
@@ -220,7 +219,9 @@
 		font-size: clamp(0.66rem, 2vw, 1rem);
 		letter-spacing: 0.5em;
 	}
-
+	.logo-padding{
+		padding-left:5%;
+	}
     .bars {
 		width: 30px;
 		height: 4px;
