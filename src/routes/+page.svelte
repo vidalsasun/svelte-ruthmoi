@@ -6,7 +6,6 @@
 	import Nav from '$lib/components/nav/nav.svelte';
 
 	if (typeof window !== 'undefined') {
-
 		onMount(() => {
 			const ctx: gsap.Context = gsap.context(() => {
 				// Floating div news
@@ -56,9 +55,7 @@
 	body {
 		margin: 0;
 		padding: 0;
-		height: 100vh;
-		color: white;
-		background: black;
+		height: 100vh;	
 		font-family: 'Cormorant Garamond', serif;
 		text-transform: uppercase;
 	}
@@ -71,21 +68,23 @@
 		left: -1px;
 		border-radius: 4px;
 		height: 25vh;
-		background-color: rgba(255, 255, 255, 0.7);
+		background-color: rgba(0, 0, 0, 0.7);
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		z-index: 2;
 		@media (min-width: 768px) {
-			width: 25%;
+			width: 28vw;
 			left: 37.5%;
+		}
+		@media (max-width: 768px) {
+			width: 100vw;
 		}
 	}
 
 	.floating-div-content {
 		width: 100%;
 		height: 100%;
-		overflow-y: auto;
 		text-align: center;
 	}
 

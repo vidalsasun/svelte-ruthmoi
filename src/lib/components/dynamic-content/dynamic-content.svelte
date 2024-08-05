@@ -97,7 +97,7 @@
 					onUp: () => !animating && gotoSection(currentIndex + 1, 1),
 					onClick: () => !animating && gotoSection(currentIndex + 1, 1),
 					tolerance: 10,
-					preventDefault: true
+					//preventDefault: true
 				});
 				// Desplazamiento automático cada 5 segundos
 				setInterval(() => {
@@ -195,7 +195,7 @@
 	}
 
 	h2 {
-		font-size: clamp(1rem, 5vw, 5rem);
+		font-size: clamp(1rem, 3vw, 3rem);
 		font-weight: 400;
 		text-align: center;
 		letter-spacing: 0.2em;

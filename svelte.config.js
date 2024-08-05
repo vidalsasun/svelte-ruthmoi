@@ -18,6 +18,9 @@ const config = {
             assets: 'build',
             fallback: '404.html'
         }),
+		alias: {
+			"@/*": "./src/lib/*",
+		  },
 		paths: {
 			base: process.env.NODE_ENV === "production" ? "/sveltekit-gh-pages" : "",
 		}

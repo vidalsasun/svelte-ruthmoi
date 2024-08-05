@@ -19,15 +19,15 @@
 		});
 	});
 </script>
-
 	{#each news as item}
-  <div class="news-content">
-		<NewsCard {item} />
-  </div>
+  		<div class="news-content">
+			<NewsCard {item} />
+  		</div>
 	{/each}
 
 <style lang="scss">
 	.news-content {
 		padding: 1em;
 	}
+  
 </style>

@@ -30,8 +30,9 @@
 					if (tl.reversed()) {
 						tl.play();
 					} else {
-						tl.to('nav', { right: '8px' })
-							.to('nav', { height: '97vh' }, '-=.1')
+						tl.to('nav', { right: '0px' })
+							.to('nav', { height: '100vh' }, '-=.1')
+							.to('nav', { paddingLeft: '5%' })
 							.to('nav ul li a', { opacity: 1, pointerEvents: 'all', stagger: 0.2 }, '-=.8')
 							.to('.close', { opacity: 1, pointerEvents: 'all' }, '-=.8')
 							.to('nav h2', { opacity: 1 }, '-=1');
@@ -49,8 +50,8 @@
 
 <header>
 	<div>
-		<a href="{base}/" class="logo-padding">
-			<img alt="SEXANDPSICO" src="../nav-logo.png" class="invert-colors" style="width: 88%;" /></a
+		<a href="{base}/">
+			<img alt="SEXANDPSICO" src="../nav-logo.png" class="invert-colors" style="width: 80%;padding-left: 5%;" /></a
 		>
 	</div>
 	<div class="container">
@@ -77,7 +78,9 @@
 	}
 	//CUSTOM
 
+
 	//NAVBAR
+	
 	.container {
 		cursor: pointer;
 		position: absolute;
