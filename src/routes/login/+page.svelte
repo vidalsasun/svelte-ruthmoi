@@ -1,12 +1,12 @@
-<script lang='ts'>
-    
-    import { browser } from '$app/environment';
+<script lang='ts'>    
     import { db } from '$lib/db';
     import { liveQuery } from 'dexie';
+    import { browser } from '$app/environment';
 
     let contacts = liveQuery(
-    () => db.contacts.toArray()
+    () => browser ? db.contacts.toArray() : []
   );
+
 </script>
 
 <ul>
