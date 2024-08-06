@@ -21,9 +21,9 @@ const config = {
 		alias: {
 			"@/*": "./src/lib/*",
 		  },
-		paths: {
+		/*paths: {
 			base: process.env.NODE_ENV === "production" ? "/sveltekit-gh-pages" : "",
-		}
+		}*/
 	}
 };
 export default config;
