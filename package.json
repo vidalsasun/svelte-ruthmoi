@@ -45,6 +45,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"dexie": "^4.0.8",
 		"gsap": "^3.12.5"
 	}
 }

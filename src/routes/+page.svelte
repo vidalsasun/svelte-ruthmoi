@@ -7,7 +7,7 @@
 
 	if (typeof window !== 'undefined') {
 		onMount(() => {
-			const ctx: gsap.Context = gsap.context(() => {
+			/* const ctx: gsap.Context = gsap.context(() => {
 				// Floating div news
 				const floatingDiv = document.querySelector('.floating-div');
 				const arrowUp = document.getElementById('arrow-up');
@@ -35,7 +35,7 @@
 
 				// Inicialmente, muestra solo la flecha hacia arriba
 				arrowDown.style.display = 'none';
-			});
+			}); */
 		});
 	}
 </script>
@@ -43,7 +43,7 @@
 <Nav />
 <DynamicContent />
 
-<div class="floating-div">
+<!-- <div class="floating-div">
 	<div class="floating-div-content">
 		<div class="arrow" id="arrow-up"><img src="arrow_up_icon.svg" alt="News up" /></div>
 		<div class="arrow" id="arrow-down"><img src="arrow_down_icon.svg" alt="News down" /></div>
@@ -52,7 +52,7 @@
 		</div>
 	</div>
 </div>
-
+ -->
 
 <style lang="scss">
 
