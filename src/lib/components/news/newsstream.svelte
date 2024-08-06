@@ -12,7 +12,7 @@
 			content: 'Descubrir tu sexualidad es un proceso personal y único que puede variar ampliamente de una persona a otra. No hay un camino correcto o incorrecto para explorar y entender tu orientación sexual',
 			src: `${base}/content/couple-hands_960.jpg`,
 			alt: 'Descubre tu sexualidad',
-			link: '/'
+			link: `${base}/`,
 		},
 		{
 			title: 'Las mil y una maneras de disfrutar del sexo',
@@ -20,7 +20,7 @@
 			content: 'Explorar la sexualidad puede ser una aventura emocionante y gratificante. Hay innumerables formas de disfrutar del sexo, cada una única y personal',
 			src: `${base}/content/boy-toy_960.jpg`,
 			alt: 'Mil maneras de disfrutar del sexo',
-			link: '/' 
+			link: `${base}/`,
 		},
 		{
 			title: 'Nuevo espacio',
@@ -28,7 +28,7 @@
 			content: 'Nuevo espacio disponible',
 			src: `${base}/content/tent_960.jpg`,
 			alt: 'Nuevo espacio',
-			link: '/' 
+			link: `${base}/`,
 		}
 		/*{ type: 'image', content: 'news-image1.jpg', alt: 'News Image 1' },
       { type: 'video', content: 'news-video.mp4' }*/
