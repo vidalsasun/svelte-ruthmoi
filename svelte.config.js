@@ -15,8 +15,7 @@ const config = {
 		adapter: adapter({
             // opciones del adaptador
             pages: 'build',
-            assets: 'build',
-            //fallback: '404.html'
+            assets: 'build'
         }),
 		alias: {
 			"@/*": "./src/lib/*",
