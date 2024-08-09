@@ -116,6 +116,7 @@
     .column {
         text-align: left;
     }
+   
 }
 
 @media (max-width: 768px) {
@@ -126,6 +127,9 @@
     .info-row {
         flex-direction: column;
         align-items: center;
+    }
+    .footer{
+        display: none;
     }
 }
 
