@@ -1,9 +1,10 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { gsap } from 'gsap';
-	import Newsstream from '$lib/components/news/newsstream.svelte';
+	//import Newsstream from '$lib/components/news/newsstream.svelte';
 	import DynamicContent from '$lib/components/dynamic-content/dynamic-content.svelte';
 	import Nav from '$lib/components/nav/nav.svelte';
+	import Footer from '$lib/components/footer/footer.svelte';
 
 	if (typeof window !== 'undefined') {
 		onMount(() => {
@@ -42,7 +43,7 @@
 
 <Nav />
 <DynamicContent />
-
+<Footer />
 <!-- <div class="floating-div">
 	<div class="floating-div-content">
 		<div class="arrow" id="arrow-up"><img src="arrow_up_icon.svg" alt="News up" /></div>

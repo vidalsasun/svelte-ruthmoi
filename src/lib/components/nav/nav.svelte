@@ -48,10 +48,10 @@
 	}
 </script>
 
-<header>
+<header class="header">
 	<div>
 		<a href="{base}/">
-			<img alt="SEXANDPSICO" src="../nav-logo.png" class="invert-colors" style="width: 80%;padding-left: 5%;" /></a
+			<img alt="SEXANDPSICO" src="../nav-logo.png" style="width: 80%;padding-left: 5%;" /></a
 		>
 	</div>
 	<div class="container">
@@ -73,6 +73,15 @@
 
 <style lang="scss">
 	//CUSTOM
+	.header{
+		background-color: #fff;
+		position: fixed; /* Fija la navegación en la parte superior */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10; /* Asegura que la navegación esté por encima de otros contenidos */
+    background-color: #fff; /* Asegura que tenga un fondo si es necesario */
+	}
 	.invert-colors {
 		filter: invert(100%) brightness(2) contrast(0.8);
 	}
@@ -101,7 +110,7 @@
 		position: absolute;
 		width: 30px;
 		height: 4px;
-		background: #fff;
+		background: #000;
 	}
 
 	.bars::before {
@@ -210,43 +219,40 @@
     /// 
     /// 
     /// 
-    header {
+    
+	@media (min-width: 768px) {
+		header {
 		position: fixed;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
 		width: 100%;
 		z-index: 3;
-		height: 7em;
+		height: 4em;
 		font-family: 'Bebas Neue', sans-serif;
 		font-size: clamp(0.66rem, 2vw, 1rem);
 		letter-spacing: 0.5em;
 	}
+	}
+	@media (max-width: 768px) {
+		header {
+		position: fixed;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		width: 100%;
+		z-index: 3;
+		height: 6em;
+		font-family: 'Bebas Neue', sans-serif;
+		font-size: clamp(0.66rem, 2vw, 1rem);
+		letter-spacing: 0.5em;
+	}
+	}
+	
+	
 	.logo-padding{
 		padding-left:5%;
 	}
-    .bars {
-		width: 30px;
-		height: 4px;
-		background: #000;
-	}
-
-	.bars::before,
-	.bars::after {
-		content: '';
-		position: absolute;
-		width: 30px;
-		height: 4px;
-		background: #fff;
-	}
-
-	.bars::before {
-		margin-top: 9px;
-	}
-
-	.bars::after {
-		margin-top: 18px;
-	}
-
+    
 </style>
 

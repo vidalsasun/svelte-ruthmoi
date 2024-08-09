@@ -213,7 +213,7 @@
 		padding: 0 5%;
 		width: 100%;
 		z-index: 3;
-		height: 7em;
+		height: 4em;
 		font-family: 'Bebas Neue', sans-serif;
 		font-size: clamp(0.66rem, 2vw, 1rem);
 		letter-spacing: 0.5em;

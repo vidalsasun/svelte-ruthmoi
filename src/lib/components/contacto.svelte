@@ -1,100 +1,244 @@
 <script lang="ts">
-    //import { db } from '$lib/db';
-    import { onMount } from 'svelte';
-    import { browser } from '$app/environment';
-	import Nav from './nav/nav.svelte';
-    
-    let status = "";
-    
+    import Footer from './footer/footer.svelte';
+    import Nav from './nav/nav.svelte';
+
     let contactName = "";
     let contactEmail = "";
     let contactMessage = "";
-    
-    /*async function addContact() {
-        try {
-            if (browser) {
-                // Add the new contact
-                const id = await db.contacts.add({
-                    name: contactName,
-                    email: contactEmail,
-                    message: contactMessage
-                });
-    
-                status = `Contact ${contactName} successfully added. Got id ${id}`;
-                
-                // Reset form:
-                contactName = "";
-                contactEmail  = "";
-                contactMessage = "";
-            }
-        } catch (error) {
-            status = `Failed to add ${contactName}: ${error}`;
-        }
-    }*/
-    </script>
-    
-    <Nav />
-    <section>
-        <div>
-            <p>{status}</p>
-            <fieldset>
-                <legend>Add new contact</legend>
-                <label>
-                    Name:
-                    <input type="text" bind:value={contactName} />
-                </label>
-                <br/>
-                <label>
-                    Email:
-                    <input type="email" bind:value={contactEmail} />
-                </label>
-                <br />
-                <label>
-                    Message:
-                    <input type="text" bind:value={contactMessage} />
-                </label>
-                <br/>
-                <!-- <button on:click|preventDefault={addContact}>Add Contact</button> -->
-            </fieldset>
+</script>
+
+<Nav />
+<section>
+    <div class="image-container">
+        <div class="image-wrapper">
+            <img alt="milk-lips" src="../content/milk-lips_960.jpg" />
         </div>
-    </section>
-    
-    <style>
+    </div>
+    <div class="content-container">
+        <div class="text-section">
+            <p>CONTACTA CON NOSOTROS</p>
+            <h1>CONTACTO</h1>
+        </div>
+        <div class="form-section">
+            <form method="POST" action="/contacto/nuevo">
+                <fieldset>
+                    <label>
+                        <input type="text" name="contactName" bind:value={contactName} placeholder="NOMBRE" required />
+                    </label>
+                    <br/>
+                    <label>                     
+                        <input type="email" name="contactEmail" bind:value={contactEmail} placeholder="EMAIL" required />
+                    </label>
+                    <br />
+                    <label>
+                        <textarea name="contactMessage" bind:value={contactMessage} placeholder="MENSAJE" required></textarea>
+                    </label>
+                    <br/>
+                    <button type="submit">Add Contact</button>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</section>
+<style>
+    @media (min-width: 768px) {
         section {
             display: flex;
+            flex-direction: column;
+            background-color: #e5cac6;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            height: calc(108vh - 60px); /* Ajusta la altura según la altura de tu navegación */
             text-align: center;
+            
         }
-    
-        fieldset {
-            border: 1px solid #ccc;
-            padding: 20px;
-            border-radius: 8px;
-        }
-    
-        label {
-            display: block;
-            margin-bottom: 10px;
-        }
-    
-        input {
+        
+        .content-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
             width: 100%;
-            padding: 8px;
-            margin-top: 5px;
+            max-width: 100%;
+            padding-left: 20px;
+            padding-right: 20px;
+            align-items: start;
+           
         }
+    }
     
-        button {
-            padding: 10px 20px;
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
+    @media (max-width: 768px) {
+        section {
+            display: flex;
+            flex-direction: column;
+            background-color: #e5cac6;
+            justify-content: center;
+            align-items: center;
+            height: calc(105vh - 70px); /* Ajusta la altura según la altura de tu navegación */
+            text-align: center;
+            margin-top: 70px; /* Espacio para evitar solapamiento con la navegación */
         }
+
+        .content-container {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            padding: 20px;
+            gap: 20px;
+           
+        }
+    }
+
+    .image-container {
+        margin-bottom: 5px;
+        width: 99%;
+        position: relative;
+        background-color: #f1dfdf;
+        display: flex;
+        justify-content: center;
+    }
+
+   
+
+    @media (min-width: 768px) {
+        .image-wrapper {
+        position: relative;
+        width: 100%;
+        max-width: 400px; /* Ajusta según sea necesario */
+    }
+
+    }
     
-        button:hover {
-            background-color: #0056b3;
-        }
-    </style>
+    @media (max-width: 768px) {
+        .image-wrapper {
+        position: relative;
+        width: 60%;
+        max-width: 400px; /* Ajusta según sea necesario */
+    }
+
+    }
+
+
+
+
+
+
+
+    .image-wrapper::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(circle, rgba(241, 223, 223, 0) 0%, rgba(241, 223, 223, 1) 70%);
+        z-index: 1;
+        pointer-events: none;
+    }
+
+    .image-wrapper img {
+        display: block;
+        width: 100%;
+        height: auto;
+        position: relative;
+        z-index: 0;
+    }
+
+    .text-section {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+  
+
+    @media (min-width: 768px) {
+        .text-section h1 {
+        font-size: 4rem; /* Tamaño grande */
+        margin: 0;
+    }
+
+    .text-section p {
+        font-size: 1.5rem; /* Tamaño más pequeño */
+        margin: 0;
+    }
+
+    }
+    
+    @media (max-width: 768px) {
+        .text-section h1 {
+        font-size: 2rem; /* Tamaño grande */
+        margin: 0;
+    }
+
+    .text-section p {
+        font-size: 1rem; /* Tamaño más pequeño */
+        margin: 0;
+    }
+
+    }
+
+
+
+
+
+
+    .form-section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    form {
+        width: 100%;
+        max-width: 100%; /* Asegura que el formulario use el ancho completo disponible */
+    }
+
+    fieldset {
+        padding: 5px;
+        width: 100%;
+        max-width: 500px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    input {
+        width: 100%;
+        padding: 8px;
+        margin-top: 5px;
+        background-color: transparent;
+        border-bottom: 1px solid black; 
+    }
+
+    textarea {
+        width: 100%;
+        padding: 8px;
+        margin-top: 5px;
+        background-color: transparent;
+        border: 1px solid black; 
+        height: 70px;
+    }
+
+    button {
+        padding: 10px 20px;
+        background-color: #007BFF;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+        color: #938988;
+        opacity: 1;
+    }
+</style>

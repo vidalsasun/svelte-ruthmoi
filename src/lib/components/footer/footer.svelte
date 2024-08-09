@@ -1,0 +1,132 @@
+<script lang="ts">
+    import { base } from '$app/paths';
+</script>
+
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-row logo-row">
+            <a href="{base}/">
+                <img alt="SEXANDPSICO" src="../nav-logo.png" />
+            </a>
+        </div>
+        <div class="footer-row info-row">
+            <div class="column contact-info">
+                <div>Contacto:</div>
+                <div>Calle mayor 25, 07010, Palma de Mallorca</div>
+                <div>info@sedandpsico.com</div>
+            </div>
+            <div class="column about-info">
+                <div>Acerca de nosotros</div>
+                <div>Quienes somos</div>
+                <div>Portfolio</div>
+            </div>
+            <div class="column subscribe">
+                <div>Noticias</div>
+                <input type="email" placeholder="Tu correo electrónico" />
+                <button type="submit">Suscribirse</button>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<style lang="scss">
+.footer {
+    background-color: #fff;
+    position: fixed; /* Fija el footer en la parte inferior */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10; /* Asegura que el footer esté por encima de otros contenidos */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1em 0;
+}
+
+.footer-content {
+    width: 100%;
+    max-width: 1200px; /* Ajusta el ancho máximo según tus necesidades */
+    padding: 0 1em;
+}
+
+.footer-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1em;
+}
+
+.logo-row {
+    margin-bottom: 1em;
+}
+
+.logo-row img {
+    width: 80%;
+    max-width: 200px; /* Ajusta el tamaño máximo según tus necesidades */
+    padding-left: 5%;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 1em;
+}
+
+.column {
+    flex: 1;
+    padding: 0 1em;
+}
+
+.contact-info,
+.about-info {
+    text-align: center;
+}
+
+.subscribe {
+    text-align: center;
+}
+
+.subscribe input {
+    width: 100%;
+    padding: 0.5em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 0.5em;
+}
+
+.subscribe button {
+    padding: 0.5em 1em;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.subscribe button:hover {
+    background-color: #0056b3;
+}
+
+@media (min-width: 768px) {
+    .footer-row {
+        flex-direction: row;
+    }
+
+    .column {
+        text-align: left;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-row {
+        flex-direction: column;
+    }
+
+    .info-row {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+</style>
