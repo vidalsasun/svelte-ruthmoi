@@ -49,8 +49,7 @@
             justify-content: center;
             align-items: center;
             height: calc(108vh - 60px); /* Ajusta la altura según la altura de tu navegación */
-            text-align: center;
-            
+            text-align: center;            
         }
         
         .content-container {
