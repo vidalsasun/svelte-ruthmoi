@@ -259,9 +259,6 @@
         cursor: pointer;
     }
 
-    button:hover {
-        background-color: #0056b3;
-    }
 
     input::placeholder,
     textarea::placeholder {
