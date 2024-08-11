@@ -6,7 +6,7 @@
     <div class="footer-content">
         <div class="footer-row logo-row">
             <a href="{base}/">
-                <img alt="SEXANDPSICO" src="../content/nav-logo.png" />
+                <img alt="SEXANDPSICO" src="{base}/nav-logo.png" />
             </a>
         </div>
         <div class="footer-row info-row">

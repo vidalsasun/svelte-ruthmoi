@@ -51,7 +51,7 @@
 <header class="header">
 	<div>
 		<a href="{base}/">
-			<img alt="SEXANDPSICO" src="../nav-logo.png" style="width: 80%;padding-left: 5%;" /></a
+			<img alt="SEXANDPSICO" src="{base}/nav-logo.png" style="width: 80%;padding-left: 5%;" /></a
 		>
 	</div>
 	<div class="container">
