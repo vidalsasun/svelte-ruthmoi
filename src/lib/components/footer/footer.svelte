@@ -4,11 +4,11 @@
 
 <footer class="footer">
     <div class="footer-content">
-        <div class="footer-row logo-row">
+       <!--  <div class="footer-row logo-row">
             <a href="{base}/">
                 <img alt="SEXANDPSICO" src="{base}/nav-logo.png" />
             </a>
-        </div>
+        </div> -->
         <div class="footer-row info-row">
             <div class="column contact-info">
                 <div>Contacto:</div>
