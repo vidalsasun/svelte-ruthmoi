@@ -2,17 +2,12 @@
 	import { onMount } from 'svelte';
 	import gsap from 'gsap';
 	import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-	import { Observer } from 'gsap/dist/Observer';
-
-	let content = [
-		{ type: 'text', content: 'Noticia 1' },
-		{ type: 'text', content: 'Noticia 2' }
-	];
+	import Nav from './nav/nav.svelte';
 
 	if (typeof window !== 'undefined') {
 		gsap.registerPlugin(ScrollTrigger);
-		gsap.registerPlugin(Observer);
-        function splitTextToChars(elements: NodeListOf<HTMLElement>): HTMLElement[][] {
+
+		function splitTextToChars(elements: NodeListOf<HTMLElement>): HTMLElement[][] {
 			return Array.from(elements).map((element) => {
 				const text = element.innerHTML;
 				element.innerHTML = text
@@ -22,277 +17,238 @@
 				return Array.from(element.querySelectorAll('span'));
 			});
 		}
+
 		onMount(() => {
+			// Animación inicial de carga
 			const ctx: gsap.Context = gsap.context(() => {
-				// CONTENT SCROLL
-				let sections = document.querySelectorAll('section'),
-					images = document.querySelectorAll('.bg'),
-					headings = gsap.utils.toArray<HTMLElement>('.section-heading'),
-					outerWrappers = gsap.utils.toArray<HTMLElement>('.outer'),
-					innerWrappers = gsap.utils.toArray<HTMLElement>('.inner'),
-					currentIndex = -1,
-					wrap = gsap.utils.wrap(0, sections.length),
-					animating;
+				let rows = gsap.utils.toArray<HTMLElement>('.row');
+				const splitRowsChars = rows.map(row => splitTextToChars(row.querySelectorAll('.section-heading')).flat());
 
-				// Divide el texto en caracteres y guarda las referencias
-				const splitHeadingsChars = splitTextToChars(headings);
-
-				gsap.set(outerWrappers, { yPercent: 100 });
-				gsap.set(innerWrappers, { yPercent: -100 });
-
-				function gotoSection(index, direction) {
-					index = wrap(index); // Asegúrate de que sea válido
-					animating = true;
-					let fromTop = direction === -1,
-						dFactor = fromTop ? -1 : 1,
-						tl = gsap.timeline({
-							defaults: { duration: 1.25, ease: 'power1.inOut' },
-							onComplete: () => (animating = false)
-						});
-					if (currentIndex >= 0) {
-						gsap.set(sections[currentIndex], { zIndex: 0 });
-						tl.to(images[currentIndex], { yPercent: -15 * dFactor }).set(sections[currentIndex], {
-							autoAlpha: 0
-						});
-					}
-					gsap.set(sections[index], { autoAlpha: 1, zIndex: 1 });
-					tl.fromTo(
-						[outerWrappers[index], innerWrappers[index]],
+				rows.forEach((row, index) => {
+					const splitChars = splitRowsChars[index];
+					gsap.fromTo(
+						splitChars,
 						{
-							yPercent: (i) => (i ? -100 * dFactor : 100 * dFactor)
+							autoAlpha: 0,
+							yPercent: 100
 						},
 						{
-							yPercent: 0
-						},
-						0
-					)
-						.fromTo(images[index], { yPercent: 15 * dFactor }, { yPercent: 0 }, 0)
-						.fromTo(
-							splitHeadingsChars[index],
-							{
-								// Accede a los caracteres divididos
-								autoAlpha: 0,
-								yPercent: 150 * dFactor
+							autoAlpha: 1,
+							yPercent: 0,
+							duration: 1,
+							stagger: {
+								each: 0.01,
+								from: 'start'
 							},
-							{
-								autoAlpha: 1,
-								yPercent: 0,
-								duration: 1,
-								ease: 'power2',
-								stagger: {
-									each: 0.02,
-									from: 'random'
-								}
-							},
-							0.2
-						);
-
-					currentIndex = index;
-				}
-
-				Observer.create({
-					type: 'wheel,touch,pointer',
-					wheelSpeed: -1,
-					onDown: () => !animating && gotoSection(currentIndex - 1, -1),
-					onUp: () => !animating && gotoSection(currentIndex + 1, 1),
-					onClick: () => !animating && gotoSection(currentIndex + 1, 1),
-					tolerance: 10,
-					//preventDefault: true
+							delay: index * 0.5
+						}
+					);
 				});
-				// Desplazamiento automático cada 5 segundos
-				setInterval(() => {
-					if (!animating) {
-						gotoSection(currentIndex + 1, 1);
-					}
-				}, 6000);
+			});
 
-				gotoSection(0, 1);
+			// Animación al hacer scroll
+			const sections = gsap.utils.toArray('.scroll-section');
+			sections.forEach(section => {
+				gsap.fromTo(
+					section,
+					{
+						opacity: 0,
+						y: 100
+					},
+					{
+						opacity: 1,
+						y: 0,
+						duration: 1,
+						scrollTrigger: {
+							trigger: section,
+							start: 'top bottom-=100px', // Cuando el top del elemento llega al 100px desde la parte inferior del viewport
+							end: 'bottom top+=100px', // Hasta que el bottom del elemento esté 100px arriba de la parte superior del viewport
+							// markers: true // Puedes habilitar los marcadores para depuración
+						}
+					}
+				);
 			});
 		});
 	}
 </script>
 
-<section class="second">
+<Nav />
+<section>
 	<div class="outer">
 		<div class="inner">
 			<div class="bg">
-				<h2 class="section-heading">VIVE UNA VIDA ORGÁSMICA</h2>
-			</div>
-		</div>
-	</div>
-</section>
-<section class="third">
-	<div class="outer">
-		<div class="inner">
-			<div class="bg">
-				<h2 style="color: #000" class="section-heading">
-					DESCUBRE, COMPRENDE Y DISFRUTA TU PERSONALIDAD SEXUAL
-				</h2>
-			</div>
-		</div>
-	</div>
-</section>
-<section class="fourth">
-	<div class="outer">
-		<div class="inner">
-			<div class="bg">
-				<h2 style="color: #fff" class="section-heading">
-					COMPRENDE LO QUE TE GUSTA DE VERDAD Y REDIMENSIONA TU PLACER DENTRO Y FUERA DE LA CAMA
-				</h2>
-			</div>
-		</div>
-	</div>
-</section>
-<section class="fifth">
-	<div class="outer">
-		<div class="inner">
-			<div class="bg">
-				<h2 style="color: #fff" class="section-heading">
-					POTENCIA TU DESEO Y DESCUBRE UNA VIDA SEXUAL MAS CENTRADA EN EL PLACER
-				</h2>
+				<!-- Row 1 -->
+				<div class="row">
+					<h3 class="section-heading">MI HISTORIA</h3>
+				</div>
+				<!-- Row 2 -->
+				<div class="row">
+					<h2 class="section-heading">LOS ESPACIOS</h2>
+				</div>
+				<!-- Row 3 -->
+				<div class="row description" style="margin-top: 30px;">
+					<h3 class="section-heading">NUESTRO OBJETIVO ES QUE CONOZCAS TU PERSONALIDAD SEXUAL PARA QUE DISFRUTES DE TI DENTRO Y FUERA DE LA CAMA, PARA LOGRARLO, TE PROPONEMOS DIFERENTES CAMINOS.</h3>
+				</div>
 			</div>
 		</div>
 	</div>
 </section>
 
-<section class="sixth">
+<!-- Sección con animación de scroll -->
+<section class="scroll-section">
 	<div class="outer">
 		<div class="inner">
 			<div class="bg">
-				<h2 class="section-heading">
-					DISFRUTA DEL SEXO DESDE TU REALIDAD Y OLVÍDATE DE LOS ESTEREOTIPOS IMPUESTOS
-				</h2>
+		
+				<div class="grid-container">
+					<div class="grid-item">
+						<img src="../content/fruits_960.jpg" alt="Descripción de la imagen 1">
+						<p>Descripción para la imagen 1.</p>
+					</div>
+					<div class="grid-item">
+						<img src="../content/flexible-girl-red_960.jpg" alt="Descripción de la imagen 2">
+						<p>Descripción para la imagen 2.</p>
+					</div>
+					<div class="grid-item">
+						<img src="../content/girl-black-and-white_960.jpg" alt="Descripción de la imagen 3">
+						<p>Descripción para la imagen 3.</p>
+					</div>
+					<div class="grid-item">
+						<img src="../content/tent_960.jpg" alt="Descripción de la imagen 4">
+						<p>Descripción para la imagen 4.</p>
+					</div>
+					<div class="grid-item">
+						<img src="../content/three-friends_960.jpg" alt="Descripción de la imagen 5">
+						<p>Descripción para la imagen 5.</p>
+					</div>
+					<div class="grid-item">
+						<img src="../content/many-fruits_960.png" alt="Descripción de la imagen 6">
+						<p>Descripción para la imagen 6.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Otra sección con animación de scroll -->
+<section class="scroll-section">
+	<div class="outer">
+		<div class="inner">
+			<div class="bg">
+				<h2>Sección de Scroll 2</h2>
+				<p>Contenido para la segunda sección animada al hacer scroll.</p>
 			</div>
 		</div>
 	</div>
 </section>
 
 <style lang="scss">
-	// SCROLL CONTENT
-	@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-	@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap');
 
-	$bg-gradient: linear-gradient(180deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.3) 100%);
+body {
+	margin: 0;
+	padding: 0;
+	height: 100vh;
+	color: #000;
+	background: #fff;
+	font-family: 'Cormorant Garamond', serif;
+	text-transform: uppercase;
+	overflow: hidden;
+}
 
-	* {
-		box-sizing: border-box;
-		user-select: none;
-	}
+h1 {
+	font-size: clamp(1rem, 3vw, 1rem);
+	font-weight: 400;
+	text-align: center;
+	letter-spacing: 0.2em;
+	color: #000; /* Cambiado a negro */
+	width: 90vw;
+	max-width: 1200px;
+	margin: 0; /* Elimina márgenes para asegurar centrado vertical */
+}
 
-	a {
-		color: #fff;
-		text-decoration: none;
-	}
+h2 {
+	font-size: clamp(1rem, 3vw, 3rem);
+	font-weight: 400;
+	text-align: center;
+	letter-spacing: 0.2em;
+	color: #000; /* Cambiado a negro */
+	width: 90vw;
+	max-width: 1200px;
+	margin: 0; /* Elimina márgenes para asegurar centrado vertical */
+}
+h3 {
+	font-size: clamp(1rem, 3vw, 1rem);
+	font-weight: 400;
+	text-align: center;
+	letter-spacing: 0.2em;
+	color: #000; /* Cambiado a negro */
+	width: 90vw;
+	max-width: 1200px;
+	margin: 0; /* Elimina márgenes para asegurar centrado vertical */
+}
 
-	body {
-		margin: 0;
-		padding: 0;
-		height: 100vh;
-		color: white;
-		background: black;
-		font-family: 'Cormorant Garamond', serif;
-		text-transform: uppercase;
-	}
+section {
+	height: 70vh;
+	width: 100%;
+	position: relative;
+	background-color: #fff;
+}
 
-	h2 {
-		font-size: clamp(1rem, 3vw, 3rem);
-		font-weight: 400;
-		text-align: center;
-		letter-spacing: 0.2em;
-		margin-right: -0.5em;
-		color: hsl(0, 0%, 80%);
-		width: 90vw;
-		max-width: 1200px;
-	}
+.outer, .inner, .bg {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 70%;
+	width: 100%;
+}
 
-	header {
-		position: fixed;
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		padding: 0 5%;
-		width: 100%;
-		z-index: 3;
-		height: 4em;
-		font-family: 'Bebas Neue', sans-serif;
-		font-size: clamp(0.66rem, 2vw, 1rem);
-		letter-spacing: 0.5em;
-	}
+.row {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	/*flex: 1;  Asegura que cada fila ocupe todo el espacio disponible */
+	text-align: center;
+	margin: 0; /* Elimina márgenes */
+	width: 100%;
+}
 
-	section {
-		height: 100%;
-		width: 100%;
-		top: 0;
-		left: 0;
-		position: fixed;
-		visibility: hidden;
+.section-heading span {
+	display: inline-block;
+}
+.scroll-section {
+	padding: 20px;
+}
 
-		.outer,
-		.inner {
-			width: 100%;
-			height: 100%;
-			overflow-y: hidden;
-		}
+.grid-container {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: repeat(2, auto);
+	gap: 20px;
+	width: 90%;
+	max-width: 1200px;
+	margin: 0 auto;
+}
 
-		.bg {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			position: absolute;
-			height: 100%;
-			width: 100%;
-			top: 0;
-			background-size: cover;
-			background-position: center;
+.grid-item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
 
-			h2 {
-				z-index: 2;
-			}
+.grid-item img {
+	width: 100%;
+	height: auto;
+	object-fit: cover;
+	border-radius: 8px;
+}
 
-			.clip-text {
-				overflow: hidden;
-			}
-		}
-	}
-
-	.first {
-		.bg {
-			background-image: $bg-gradient, url('$lib/assets/content/pizza-girl_960.jpg');
-		}
-	}
-
-	.second {
-		.bg {
-			background-image: $bg-gradient, url('$lib/assets/content/red-fruit_960.jpg');
-		}
-	}
-
-	.third {
-		.bg {
-			/*background-image: $bg-gradient, url('$lib/assets/content/red-purse_960.jpg');*/
-			background-color: #e5cac6;
-		}
-	}
-
-	.fourth {
-		.bg {
-			background-image: $bg-gradient, url('$lib/assets/content/red-purse_960.jpg');
-		}
-	}
-
-	.fifth {
-		.bg {
-			background-image: $bg-gradient, url('$lib/assets/content/lips-letters_960.jpg');
-			background-position: 50% 45%;
-		}
-	}
-	.sixth {
-		.bg {
-			background-image: $bg-gradient, url('$lib/assets/content/pizza-girls_960.jpg');
-			background-position: 50% 45%;
-		}
-	}
-	h2 * {
-		will-change: transform;
-	}
+.grid-item p {
+	text-align: center;
+	margin-top: 10px;
+	font-size: 1rem;
+	color: #333;
+}
 </style>

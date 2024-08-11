@@ -174,6 +174,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: flex-start;
+        color:#000;
     }
 
   
