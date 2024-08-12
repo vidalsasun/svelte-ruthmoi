@@ -4,6 +4,39 @@
 	import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 	import Nav from './nav/nav.svelte';
 
+	const items = [
+		{
+			title: 'CONSULTORIO SEXUAL',
+			image: '../content/fruits_960.jpg',
+			description: 'LOREM IPSUM DOLOR SIT AMET'
+		},
+		{
+			title: 'GRUPO DE MUJERES',
+			image: '../content/flexible-girl-red_960.jpg',
+			description: 'LOREM IPSUM DOLOR SIT AMET'
+		},
+		{
+			title: 'MONOGRÁFICO DE FANTASÍAS NO DESEADAS',
+			image: '../content/girl-black-and-white_960.jpg',
+			description: 'LOREM IPSUM DOLOR SIT AMET'
+		},
+		{
+			title: 'TALLER DE FANTASIAS',
+			image: '../content/tent_960.jpg',
+			description: 'LOREM IPSUM DOLOR SIT AMET'
+		},
+		{
+			title: 'MONOGRÁFICO DE FANTASÍAS DESEADAS',
+			image: '../content/three-friends_960.jpg',
+			description: 'LOREM IPSUM DOLOR SIT AMET'
+		},
+		{
+			title: 'STAGE DE DESCUBRIMIENTO',
+			image: '../content/many-fruits_960.png',
+			description: 'LOREM IPSUM DOLOR SIT AMET'
+		}
+	];
+
 	if (typeof window !== 'undefined') {
 		gsap.registerPlugin(ScrollTrigger);
 
@@ -22,7 +55,9 @@
 			// Animación inicial de carga
 			const ctx: gsap.Context = gsap.context(() => {
 				let rows = gsap.utils.toArray<HTMLElement>('.row');
-				const splitRowsChars = rows.map(row => splitTextToChars(row.querySelectorAll('.section-heading')).flat());
+				const splitRowsChars = rows.map((row) =>
+					splitTextToChars(row.querySelectorAll('.section-heading')).flat()
+				);
 
 				rows.forEach((row, index) => {
 					const splitChars = splitRowsChars[index];
@@ -48,7 +83,7 @@
 
 			// Animación al hacer scroll
 			const sections = gsap.utils.toArray('.scroll-section');
-			sections.forEach(section => {
+			sections.forEach((section) => {
 				gsap.fromTo(
 					section,
 					{
@@ -62,7 +97,7 @@
 						scrollTrigger: {
 							trigger: section,
 							start: 'top bottom-=100px', // Cuando el top del elemento llega al 100px desde la parte inferior del viewport
-							end: 'bottom top+=100px', // Hasta que el bottom del elemento esté 100px arriba de la parte superior del viewport
+							end: 'bottom top+=100px' // Hasta que el bottom del elemento esté 100px arriba de la parte superior del viewport
 							// markers: true // Puedes habilitar los marcadores para depuración
 						}
 					}
@@ -72,13 +107,16 @@
 	}
 </script>
 
-<Nav />
+<div class="nav-container">
+	<Nav />
+</div>
+
 <section>
 	<div class="outer">
 		<div class="inner">
-			<div class="bg">
+			<div class="bg upper-row">
 				<!-- Row 1 -->
-				<div class="row">
+				<div class="row" style="margin-bottom: 30px;">
 					<h3 class="section-heading">MI HISTORIA</h3>
 				</div>
 				<!-- Row 2 -->
@@ -87,44 +125,46 @@
 				</div>
 				<!-- Row 3 -->
 				<div class="row description" style="margin-top: 30px;">
-					<h3 class="section-heading">NUESTRO OBJETIVO ES QUE CONOZCAS TU PERSONALIDAD SEXUAL PARA QUE DISFRUTES DE TI DENTRO Y FUERA DE LA CAMA, PARA LOGRARLO, TE PROPONEMOS DIFERENTES CAMINOS.</h3>
+					<h3 class="section-heading">
+						NUESTRO OBJETIVO ES QUE CONOZCAS TU PERSONALIDAD SEXUAL PARA QUE DISFRUTES DE TI DENTRO
+						Y FUERA DE LA CAMA, PARA LOGRARLO, TE PROPONEMOS DIFERENTES CAMINOS.
+					</h3>
 				</div>
 			</div>
 		</div>
 	</div>
 </section>
 
-<!-- Sección con animación de scroll -->
 <section class="scroll-section">
 	<div class="outer">
 		<div class="inner">
 			<div class="bg">
-		
 				<div class="grid-container">
-					<div class="grid-item">
-						<img src="../content/fruits_960.jpg" alt="Descripción de la imagen 1">
-						<p>Descripción para la imagen 1.</p>
-					</div>
-					<div class="grid-item">
-						<img src="../content/flexible-girl-red_960.jpg" alt="Descripción de la imagen 2">
-						<p>Descripción para la imagen 2.</p>
-					</div>
-					<div class="grid-item">
-						<img src="../content/girl-black-and-white_960.jpg" alt="Descripción de la imagen 3">
-						<p>Descripción para la imagen 3.</p>
-					</div>
-					<div class="grid-item">
-						<img src="../content/tent_960.jpg" alt="Descripción de la imagen 4">
-						<p>Descripción para la imagen 4.</p>
-					</div>
-					<div class="grid-item">
-						<img src="../content/three-friends_960.jpg" alt="Descripción de la imagen 5">
-						<p>Descripción para la imagen 5.</p>
-					</div>
-					<div class="grid-item">
-						<img src="../content/many-fruits_960.png" alt="Descripción de la imagen 6">
-						<p>Descripción para la imagen 6.</p>
-					</div>
+					<!-- Renderiza dinámicamente las tarjetas a partir del JSON -->
+					{#each items as item}
+						<div class="grid-item">
+							<!-- Usa las clases de DaisyUI para las tarjetas -->
+							<div class="card w-96 bg-base-100 shadow-xl">
+								<figure>
+									<img src={item.image} alt={item.title} />
+								</figure>
+								<div class="card-body">
+									<div class="card-content">
+										<div class="card-text">
+											<p class="card-title">{item.title}</p>
+											<p>{item.description}</p>
+										</div>
+										<div class="card-action">
+											<a href="/" class="button-text">MAS</a>
+											<button class="image-button">
+												<img src="../content/arrow-submit.png" alt="Más" />
+											</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					{/each}
 				</div>
 			</div>
 		</div>
@@ -144,111 +184,175 @@
 </section>
 
 <style lang="scss">
+	body {
+		margin: 0;
+		padding: 0;
+		height: 100vh;
+		color: #000;
+		background: #fff;
+		font-family: 'Cormorant Garamond', serif;
+		text-transform: uppercase;
+		overflow-x: hidden; /* Oculta el desbordamiento horizontal */
+	}
+	h1 {
+		font-size: clamp(1rem, 2vw, 2rem); /* Ajusta los valores según sea necesario */
+		font-weight: 400;
+		text-align: center;
+		letter-spacing: 0.2em;
+		color: #000;
+		width: 90vw;
+		max-width: 1200px;
+		margin: 0;
+	}
 
-body {
-	margin: 0;
-	padding: 0;
-	height: 100vh;
-	color: #000;
-	background: #fff;
-	font-family: 'Cormorant Garamond', serif;
-	text-transform: uppercase;
-	overflow: hidden;
-}
+	h2 {
+		font-size: clamp(1.5rem, 4vw, 4rem); /* Ajusta los valores según sea necesario */
+		font-weight: 400;
+		text-align: center;
+		letter-spacing: 0.2em;
+		color: #000;
+		width: 90vw;
+		max-width: 1200px;
+		margin: 0;
+	}
 
-h1 {
-	font-size: clamp(1rem, 3vw, 1rem);
-	font-weight: 400;
-	text-align: center;
-	letter-spacing: 0.2em;
-	color: #000; /* Cambiado a negro */
-	width: 90vw;
-	max-width: 1200px;
-	margin: 0; /* Elimina márgenes para asegurar centrado vertical */
-}
+	h3 {
+		font-size: clamp(1rem, 3vw, 2rem); /* Ajusta los valores según sea necesario */
+		font-weight: 400;
+		text-align: center;
+		letter-spacing: 0.2em;
+		color: #000;
+		width: 90vw;
+		max-width: 1200px;
+		margin: 0;
+	}
+	.upper-row {
+		margin-top: 50px;
+		margin-bottom: 50px;
+		height: 500px;
+	}
+	section {
+		width: 100%;
+		position: relative;
+		background-color: #fff;
+		padding: 20px; /* Añade relleno para asegurar que el contenido no se sobreponga */
+		box-sizing: border-box; /* Incluye el padding en el tamaño total del elemento */
+	}
+	.outer,
+	.inner,
+	.bg {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		box-sizing: border-box; /* Incluye el padding en el tamaño total del elemento */
+	}
+	.card-title {
+		font-size: 1.5rem;
+	}
+	.row {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		/*flex: 1;  Asegura que cada fila ocupe todo el espacio disponible */
+		text-align: center;
+		margin: 0; /* Elimina márgenes */
+		width: 100%;
+	}
+	.nav-container {
+		width: 100%;
+		position: relative;
+		z-index: 10; /* Asegúrate de que el nav esté por encima del contenido */
+	}
+	.section-heading span {
+		display: inline-block;
+	}
+	.scroll-section {
+		padding: 20px;
+	}
+	.button-text {
+		font-weight: bold;
+		font-size: 1.5rem;
+		margin-right: 5px;
+	}
+	.grid-container {
+		display: grid;
+		grid-template-columns: repeat(1, 1fr); /* 1 columna en móviles */
+		grid-template-rows: repeat(auto-fill, minmax(200px, 1fr)); /* Ajusta la altura de las filas */
+		gap: 20px;
+		max-width: 90%;
+		margin: 0 auto;
 
-h2 {
-	font-size: clamp(1rem, 3vw, 3rem);
-	font-weight: 400;
-	text-align: center;
-	letter-spacing: 0.2em;
-	color: #000; /* Cambiado a negro */
-	width: 90vw;
-	max-width: 1200px;
-	margin: 0; /* Elimina márgenes para asegurar centrado vertical */
-}
-h3 {
-	font-size: clamp(1rem, 3vw, 1rem);
-	font-weight: 400;
-	text-align: center;
-	letter-spacing: 0.2em;
-	color: #000; /* Cambiado a negro */
-	width: 90vw;
-	max-width: 1200px;
-	margin: 0; /* Elimina márgenes para asegurar centrado vertical */
-}
+		@media (min-width: 768px) {
+			grid-template-columns: repeat(3, 1fr); /* 3 columnas en pantallas grandes */
+		}
+	}
 
-section {
-	height: 70vh;
-	width: 100%;
-	position: relative;
-	background-color: #fff;
-}
+	.grid-item {
+		display: flex;
+		justify-content: center;
+		width: 100%; /* Asegura que el item use todo el ancho disponible */
+		margin-bottom: 20px;
+	}
 
-.outer, .inner, .bg {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	height: 70%;
-	width: 100%;
-}
+	.card {
+		width: 100%;
+		max-width: 100%; /* Evita que la tarjeta se expanda más allá del contenedor */
+		display: flex;
+		flex-direction: column; /* Permite que el contenido se ajuste verticalmente */
+	}
 
-.row {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	/*flex: 1;  Asegura que cada fila ocupe todo el espacio disponible */
-	text-align: center;
-	margin: 0; /* Elimina márgenes */
-	width: 100%;
-}
+	.card img {
+		border-radius: 0.5rem;
+		width: 100%; /* Asegura que la imagen se ajuste al ancho de la tarjeta */
+		height: auto;
+	}
 
-.section-heading span {
-	display: inline-block;
-}
-.scroll-section {
-	padding: 20px;
-}
+	.card-body {
+		display: flex;
+		flex-direction: column;
+		padding: 10px;
+	}
+	.card-content {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		flex-wrap: wrap;
+	}
+	.card-text {
+		flex: 1; /* Toma todo el espacio disponible menos el de la acción */
+	}
 
-.grid-container {
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	grid-template-rows: repeat(2, auto);
-	gap: 20px;
-	width: 90%;
-	max-width: 1200px;
-	margin: 0 auto;
-}
+	.card-action {
+		display: flex;
+		align-items: center;
+		justify-content: flex-end; /* Alinea el enlace "Más" a la derecha */
+	}
 
-.grid-item {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-}
+	.card-title {
+		font-size: 1.5rem; /* Tamaño del texto del título */
+		margin: 0;
+	}
 
-.grid-item img {
-	width: 100%;
-	height: auto;
-	object-fit: cover;
-	border-radius: 8px;
-}
+	.card-body p {
+		margin: 5px 0;
+		color: #333;
+	}
 
-.grid-item p {
-	text-align: center;
-	margin-top: 10px;
-	font-size: 1rem;
-	color: #333;
-}
+	.btn-primary {
+	}
+
+	.grid-item img {
+		width: 100%;
+		height: auto;
+		object-fit: cover;
+		border-radius: 8px;
+	}
+
+	.grid-item p {
+		text-align: center;
+		margin-top: 10px;
+		color: #333;
+	}
 </style>

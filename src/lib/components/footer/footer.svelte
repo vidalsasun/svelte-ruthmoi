@@ -20,11 +20,15 @@
                 <div>Quienes somos</div>
                 <div>Portfolio</div>
             </div>
-            <div class="column subscribe">
-                <div>Noticias</div>
-                <input type="email" placeholder="Tu correo electrónico" />
-                <button type="submit">Suscribirse</button>
-            </div>
+            
+            <input type="email" placeholder="Tu correo electrónico" class="input input-bordered w-full max-w-xs" />
+
+            <button class="image-button">
+                <img src="../content/contact-button.png" alt="Enviar" />
+                <span class="button-text">Suscribirse</span>
+            </button>
+
+
         </div>
     </div>
 </footer>
@@ -65,6 +69,34 @@
     max-width: 200px; /* Ajusta el tamaño máximo según tus necesidades */
     padding-left: 5%;
 }
+
+
+.image-button {
+    position: relative; /* Posiciona los elementos de forma relativa para superponer el texto */
+    border: none; /* Elimina el borde del botón */
+    padding: 0; /* Elimina el padding por defecto */
+    background: none; /* Elimina el fondo por defecto */
+    cursor: pointer; /* Cambia el cursor para indicar que es un botón */
+}
+
+.image-button img {
+    display: block; /* Elimina el espacio inferior alrededor de la imagen */
+    width: 100%; /* Asegura que la imagen ocupe el 100% del botón */
+    height: auto; /* Mantiene la proporción de la imagen */
+}
+
+.button-text {
+    position: absolute; /* Permite colocar el texto sobre la imagen */
+    top: 50%; /* Centra verticalmente el texto */
+    left: 26%; /* Centra horizontalmente el texto */
+    transform: translate(+20%, -70%); /* Ajusta la posición para centrar exactamente */
+    color: #000; /* Cambia el color del texto */
+    font-size: 1rem; /* Tamaño del texto */
+    font-weight: bold; /* Grosor del texto */
+    text-shadow: 1px 1px 2px black; /* Añade sombra al texto para mayor legibilidad */
+    pointer-events: none; /* Evita que el texto sea clicable, permitiendo que la imagen actúe como botón */
+}
+
 
 .info-row {
     display: flex;
