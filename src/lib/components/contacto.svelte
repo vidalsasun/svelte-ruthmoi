@@ -44,6 +44,10 @@
     </div>
 </section>
 <style>
+    body {
+    background-color: #e5cac6; /* Color de fondo general de la página */
+}
+
     @media (min-width: 768px) {
         section {
             display: flex;
@@ -51,7 +55,7 @@
             background-color: #e5cac6;
             justify-content: center;
             align-items: center;
-            height: calc(108vh - 60px); /* Ajusta la altura según la altura de tu navegación */
+            height: calc(92vh - 60px); /* Ajusta la altura según la altura de tu navegación */
             text-align: center;            
         }
         
@@ -75,7 +79,7 @@
             background-color: #e5cac6;
             justify-content: center;
             align-items: center;
-            height: calc(105vh - 70px); /* Ajusta la altura según la altura de tu navegación */
+            height: calc(88vh - 70px); /* Ajusta la altura según la altura de tu navegación */
             text-align: center;
             margin-top: 70px; /* Espacio para evitar solapamiento con la navegación */
         }

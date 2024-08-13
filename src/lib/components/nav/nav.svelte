@@ -25,28 +25,33 @@
 				//NAVBAR
 				const open = document.querySelector('.container');
 				const close = document.querySelector('.close');
-				var tl = gsap.timeline({ defaults: { duration: 0.6, ease: 'expo.inOut' } });
+				var tl = gsap.timeline({ defaults: { duration: 0.3, ease: 'expo.inOut' } });
+				
 				open.addEventListener('click', () => {
 					if (tl.reversed()) {
 						tl.play();
 					} else {
-						tl.to('nav', { right: '0px' })
-							.to('nav', { height: '100vh' }, '-=.1')
+						tl.to(open, { rotation: 90, opacity: 0, pointerEvents: 'none' }) // Animación de rotación y desaparición del botón
+							.to('nav', { right: '0px' })
+							.to('nav', { height: '100vh' })
 							.to('nav', { paddingLeft: '5%' })
-							.to('nav ul li a', { opacity: 1, pointerEvents: 'all', stagger: 0.2 }, '-=.8')
-							.to('.close', { opacity: 1, pointerEvents: 'all' }, '-=.8')
-							.to('nav h2', { opacity: 1 }, '-=1');
+							.to('nav ul li a', { opacity: 1, pointerEvents: 'all', stagger: 0.1 })
+							.to('.close', { opacity: 1, pointerEvents: 'all' })
+							.to('nav h2', { opacity: 1 });
 					}
 				});
 
 				close.addEventListener('click', () => {
-					tl.reverse();
+					tl.reverse().then(() => {
+						gsap.to(open, { rotation: 0, opacity: 1, pointerEvents: 'all' }); // Restaura el botón de menú cuando se cierra el menú
+					});
 				});
 				////////////////
 			});
 		});
 	}
 </script>
+
 
 <header class="header">
 	<div>

@@ -25,7 +25,7 @@
 
             <button class="image-button">
                 <img src="../content/contact-button.png" alt="Enviar" />
-                <span class="button-text">Suscribirse</span>
+                <span class="button-text">SUBSCRIBIR</span>
             </button>
 
 
@@ -81,14 +81,14 @@
 
 .image-button img {
     display: block; /* Elimina el espacio inferior alrededor de la imagen */
-    width: 100%; /* Asegura que la imagen ocupe el 100% del botón */
+    width: 60%; /* Asegura que la imagen ocupe el 100% del botón */
     height: auto; /* Mantiene la proporción de la imagen */
 }
 
 .button-text {
     position: absolute; /* Permite colocar el texto sobre la imagen */
     top: 50%; /* Centra verticalmente el texto */
-    left: 26%; /* Centra horizontalmente el texto */
+    left: 5%; /* Centra horizontalmente el texto */
     transform: translate(+20%, -70%); /* Ajusta la posición para centrar exactamente */
     color: #000; /* Cambia el color del texto */
     font-size: 1rem; /* Tamaño del texto */
