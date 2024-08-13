@@ -1,10 +1,6 @@
 <script lang="ts">
     import { onMount } from 'svelte';
     import gsap from 'gsap';
-    import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-  
-    
-    gsap.registerPlugin(ScrollTrigger);
   
     export let messages = [];
     export let duration = 60; // Duración de la animación

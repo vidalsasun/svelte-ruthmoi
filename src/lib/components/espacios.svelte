@@ -1,6 +1,6 @@
 <script lang="ts">
 		import { base } from '$app/paths';
-		
+
 	import { onMount } from 'svelte';
 	import gsap from 'gsap';
 	import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
@@ -49,6 +49,7 @@
 		{ message: 'ANOTHER MESSAGE TO SCROLL', user: 'MARTA', age: '45 AÑOS' }
 	];
 	if (typeof window !== 'undefined') {
+		
 		gsap.registerPlugin(ScrollTrigger);
 
 		function splitTextToChars(elements: NodeListOf<HTMLElement>): HTMLElement[][] {
