@@ -1,4 +1,6 @@
 <script lang="ts">
+		import { base } from '$app/paths';
+		
 	import { onMount } from 'svelte';
 	import gsap from 'gsap';
 	import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
@@ -164,7 +166,7 @@
 											<p>{item.description}</p>
 										</div>
 										<div class="card-action">
-											<a href="/" class="button-text">MAS</a>
+											<a href="{base}/" class="button-text">MAS</a>
 											<button class="image-button">
 												<img src="../content/arrow-submit.png" alt="Más" />
 											</button>
