@@ -43,22 +43,16 @@
         </div>
     </div>
 </section>
-
-<style lang="scss">
-
-body 
-{
-    background-color: #e5cac6!important; /* Color de fondo general de la página */
-}
-
+<style>
     @media (min-width: 768px) {
         section {
             display: flex;
             flex-direction: column;
             background-color: #e5cac6;
-            justify-content: center;
+            justify-content: flex-start;
+            margin-top: 60px;
             align-items: center;
-            height: calc(92vh - 60px); /* Ajusta la altura según la altura de tu navegación */
+            height: calc(108vh - 60px); /* Ajusta la altura según la altura de tu navegación */
             text-align: center;            
         }
         
@@ -80,9 +74,10 @@ body
             display: flex;
             flex-direction: column;
             background-color: #e5cac6;
-            justify-content: center;
+            justify-content: flex-start;
+            margin-top: 60px;
             align-items: center;
-            height: calc(111Vh - 70px); /* Ajusta la altura según la altura de tu navegación */
+            height: calc(105vh - 70px); /* Ajusta la altura según la altura de tu navegación */
             text-align: center;
             margin-top: 70px; /* Espacio para evitar solapamiento con la navegación */
         }

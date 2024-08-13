@@ -83,6 +83,7 @@
     .scroll-text {
       display: flex;
       flex-direction: row;
+      color: #000;
     }
     
     .text-item {

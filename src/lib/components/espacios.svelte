@@ -381,6 +381,7 @@
 		display: flex;
 		flex-direction: column;
 		padding: 10px;
+		background-color: #fff;
 	}
 	.card-content {
 		display: flex;
@@ -431,6 +432,7 @@
 
 	.text-p {
 		font-size: 1.5rem;
+		color: #000;
 	}
 
 	.split-section {
