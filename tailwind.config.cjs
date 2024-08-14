@@ -8,7 +8,6 @@ const config = {
 		extend: {}
 	},
 
-	plugins: [require('daisyui')],
 	darkMode: 'class'
 };
 

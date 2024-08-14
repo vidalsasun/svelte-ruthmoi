@@ -1,44 +1,29 @@
 <script lang="ts">
 	import { base } from '$app/paths';
-
 	import { onMount } from 'svelte';
 	import gsap from 'gsap';
 	import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 	import Nav from './nav/nav.svelte';
 	import ScrollingText from './scroling-text/scrollingtext.svelte';
 
-	const items = [
+	// Importar el JSON mock
+	const gridItems = [
 		{
-			title: 'CONSULTORIO SEXUAL',
-			image: '../content/fruits_960.jpg',
-			description: 'LOREM IPSUM DOLOR SIT AMET'
+			text: 'UNA METODOLOGÍA QUE COMBINA SEXOLOGÍA Y PSICOLOGÍA PARA QUE PONGAS EL FOCO EN TU SEXUALIDAD Y AUMENTES TU DESEO.'
 		},
 		{
-			title: 'GRUPO DE MUJERES',
-			image: '../content/flexible-girl-red_960.jpg',
-			description: 'LOREM IPSUM DOLOR SIT AMET'
+			text: 'VERDADEROS EXPERTOS ACOMPAÑÁNDOTE A LOGRARLO, A TRABAJARLO Y A SENTIR COMO EMPIEZAS A DISFRUTAR DENTRO Y FUERA DE LA CAMA.'
+		},
+		{ text: 'UNA DECISIÓN DE COMO QUIERES VIVIR CONECTANDO TODOS LOS ASPECTOS DE TU VIDA.' },
+		{
+			text: 'UN PROCESO DE TRANSFORMACIÓN TANGIBLE QUE VES Y TOCAS REALMENTE A PARTIR DE DESCUBRIR, COMPRENDER Y DARLE RIENDA SUELTA A TUS DESEOS.'
 		},
 		{
-			title: 'MONOGRÁFICO DE FANTASÍAS NO DESEADAS',
-			image: '../content/girl-black-and-white_960.jpg',
-			description: 'LOREM IPSUM DOLOR SIT AMET'
+			text: 'UN PROCESO CON UNOS OBJETIVOS MARCADOS DESDE EL INICIO, FÁCIL DE APLICAR EN TU VIDA PARA QUE TENGAS RESULTADOS REALES.'
 		},
-		{
-			title: 'TALLER DE FANTASIAS',
-			image: '../content/tent_960.jpg',
-			description: 'LOREM IPSUM DOLOR SIT AMET'
-		},
-		{
-			title: 'MONOGRÁFICO DE FANTASÍAS DESEADAS',
-			image: '../content/three-friends_960.jpg',
-			description: 'LOREM IPSUM DOLOR SIT AMET'
-		},
-		{
-			title: 'STAGE DE DESCUBRIMIENTO',
-			image: '../content/many-fruits_960.png',
-			description: 'LOREM IPSUM DOLOR SIT AMET'
-		}
+		{ text: 'EXPANDE TUS HORIZONTES' }
 	];
+
 	const messages = [
 		{
 			message: 'LOREM IPSUM DOLOR SIT AMET',
@@ -48,22 +33,27 @@
 		{ message: 'SOME OTHER TEXT FOR ANIMATION', user: 'JUAN', age: '30 AÑOS' },
 		{ message: 'ANOTHER MESSAGE TO SCROLL', user: 'MARTA', age: '45 AÑOS' }
 	];
+
 	if (typeof window !== 'undefined') {
 		gsap.registerPlugin(ScrollTrigger);
 
 		function splitTextToChars(elements: NodeListOf<HTMLElement>): HTMLElement[][] {
 			return Array.from(elements).map((element) => {
-				const text = element.innerHTML;
-				element.innerHTML = text
-					.split('')
-					.map((char) => `<span>${char}</span>`)
-					.join('');
-				return Array.from(element.querySelectorAll('span'));
+				const text = element.textContent || '';
+				element.innerHTML = ''; // Limpiar el contenido HTML del elemento
+
+				// Crear un span para cada carácter y evitar que se escape el texto
+				const spans = Array.from(text).map((char) => {
+					const span = document.createElement('span');
+					span.textContent = char;
+					element.appendChild(span);
+					return span;
+				});
+
+				return spans;
 			});
 		}
-
 		onMount(() => {
-			// Animación inicial de carga
 			const ctx: gsap.Context = gsap.context(() => {
 				let rows = gsap.utils.toArray<HTMLElement>('.row');
 				const splitRowsChars = rows.map((row) =>
@@ -92,7 +82,6 @@
 				});
 			});
 
-			// Animación al hacer scroll
 			const sections = gsap.utils.toArray('.scroll-section');
 			sections.forEach((section) => {
 				gsap.fromTo(
@@ -105,9 +94,8 @@
 						duration: 1,
 						scrollTrigger: {
 							trigger: section,
-							start: 'top bottom-=100px', // Cuando el top del elemento llega al 100px desde la parte inferior del viewport
-							end: 'bottom top+=100px' // Hasta que el bottom del elemento esté 100px arriba de la parte superior del viewport
-							// markers: true // Puedes habilitar los marcadores para depuración
+							start: 'top bottom-=100px',
+							end: 'bottom top+=100px'
 						}
 					}
 				);
@@ -120,24 +108,26 @@
 	<Nav />
 </div>
 
+<section class="image-section">
+	<div class="image-container">
+		<img alt="lying" src="../content/porque_header_960.jpg" />
+	</div>
+</section>
+
 <section>
 	<div class="outer">
 		<div class="inner">
 			<div class="bg upper-row">
 				<!-- Row 1 -->
 				<div class="row" style="margin-bottom: 30px;">
-					<h3 class="section-heading">MI HISTORIA</h3>
+					<h3 class="section-heading">¿POR QUE SEX & PSICO?</h3>
 				</div>
 				<!-- Row 2 -->
 				<div class="row">
-					<h2 class="section-heading">LOS ESPACIOS</h2>
-				</div>
-				<!-- Row 3 -->
-				<div class="row description" style="margin-top: 30px;">
-					<h3 class="section-heading">
-						NUESTRO OBJETIVO ES QUE CONOZCAS TU PERSONALIDAD SEXUAL PARA QUE DISFRUTES DE TI DENTRO
-						Y FUERA DE LA CAMA, PARA LOGRARLO, TE PROPONEMOS DIFERENTES CAMINOS.
-					</h3>
+					<h2 class="section-heading">
+						PORQUE PUEDES DISFRUTAR PLENAMENTE SIN TENER QUE ELEGIR ENTRE EL SEXO VAINILLA O EL
+						PORNO
+					</h2>
 				</div>
 			</div>
 		</div>
@@ -148,32 +138,27 @@
 	<div class="outer">
 		<div class="inner">
 			<div class="bg">
-				<div class="grid-container">
-					<!-- Renderiza dinámicamente las tarjetas a partir del JSON -->
-					{#each items as item}
-						<div class="grid-item">
-							<!-- Usa las clases de DaisyUI para las tarjetas -->
-							<div class="card w-96 bg-base-100 shadow-xl">
-								<figure>
-									<img src={item.image} alt={item.title} />
-								</figure>
-								<div class="card-body">
-									<div class="card-content">
-										<div class="card-text">
-											<p class="card-title">{item.title}</p>
-											<p>{item.description}</p>
-										</div>
-										<div class="card-action">
-											<a href="{base}/" class="button-text">MAS</a>
-											<button class="image-button">
-												<img src="../content/arrow-submit.png" alt="Más" />
-											</button>
-										</div>
-									</div>
+				<div class="split-section">
+					<div class="split-left">
+						<h2 class="text-p">
+							SE TRATA DE CONOCERTE Y SABER QUÉ ES LO QUE TE GUSTA A TI. SIN COMPARARTE CON
+							ESTEREOTIPOS MITIFICADOS. SIN REPRIMIR TUS DESEOS Y TUS FANTASÍAS. SIN TENER
+							EXPECTATIVAS BASADAS EN LO QUE VES, LEES O ESCUCHAS.
+						</h2>
+						<h2 class="text-p">
+							PORQUE DISFRUTAS MÁS Y MEJOR, DENTRO Y FUERA DE LA CAMA, CUANDO PONES TU SEXUALIDAD EN
+							EL CENTRO DE TU VIDA.
+						</h2>
+					</div>
+					<div class="split-right">
+						<div class="grid-container">
+							{#each gridItems as item}
+								<div class="grid-item">
+									{item.text}<img src="../content/arrow-index.png" alt="index" class="arrow-icon" />
 								</div>
-							</div>
+							{/each}
 						</div>
-					{/each}
+					</div>
 				</div>
 			</div>
 		</div>
@@ -222,15 +207,12 @@
 	<div class="outer">
 		<div class="inner">
 			<div class="bg upper-row">
-				<!-- Row 1 -->
 				<div class="row" style="margin-bottom: 30px;">
 					<h3 class="section-heading">NI VANILLA, NI PORNO</h3>
 				</div>
-				<!-- Row 2 -->
 				<div class="row">
 					<h2 class="section-heading">SE TRATA DE SEXO REAL</h2>
 				</div>
-				<!-- Row 3 -->
 				<div class="row description" style="margin-top: 30px;">
 					<h3 class="section-heading">
 						SEX AND PSICO NACE PARA RESOLVER TUS PROBLEMAS SEXUALES DESDE DENTRO: COMPRENDER QUÉ ES
@@ -261,43 +243,34 @@
 		text-transform: uppercase;
 		overflow-x: hidden; /* Oculta el desbordamiento horizontal */
 	}
-	h1 {
-		font-size: clamp(1rem, 2vw, 2rem); /* Ajusta los valores según sea necesario */
+
+	h1,
+	h2,
+	h3 {
 		font-weight: 400;
 		text-align: center;
 		letter-spacing: 0.2em;
 		color: #000;
-		width: 90vw;
 		max-width: 1200px;
 		margin: 0;
+	}
+
+	h1 {
+		font-size: clamp(1rem, 2vw, 2rem); /* Ajusta los valores según sea necesario */
 	}
 
 	h2 {
 		font-size: clamp(1.5rem, 4vw, 4rem); /* Ajusta los valores según sea necesario */
-		font-weight: 400;
-		text-align: center;
-		letter-spacing: 0.2em;
-		color: #000;
-		width: 90vw;
-		max-width: 1200px;
-		margin: 0;
 	}
 
 	h3 {
 		font-size: clamp(1rem, 3vw, 2rem); /* Ajusta los valores según sea necesario */
-		font-weight: 400;
-		text-align: center;
-		letter-spacing: 0.2em;
-		color: #000;
-		width: 90vw;
-		max-width: 1200px;
-		margin: 0;
 	}
+
 	.upper-row {
-		margin-top: 50px;
 		margin-bottom: 50px;
-		height: 500px;
 	}
+
 	section {
 		width: 100%;
 		position: relative;
@@ -305,6 +278,7 @@
 		padding: 20px; /* Añade relleno para asegurar que el contenido no se sobreponga */
 		box-sizing: border-box; /* Incluye el padding en el tamaño total del elemento */
 	}
+
 	.outer,
 	.inner,
 	.bg {
@@ -315,111 +289,83 @@
 		width: 100%;
 		box-sizing: border-box; /* Incluye el padding en el tamaño total del elemento */
 	}
+
 	.row {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		/*flex: 1;  Asegura que cada fila ocupe todo el espacio disponible */
 		text-align: center;
-		margin: 0; /* Elimina márgenes */
+		margin: 0;
 		width: 100%;
 	}
+
 	.nav-container {
 		width: 100%;
 		position: relative;
 		z-index: 10; /* Asegúrate de que el nav esté por encima del contenido */
 	}
+
+	.image-section {
+		width: 100%;
+		height: 40vh; /* Ocupa el 50% de la altura del viewport */
+	}
+
+	.image-container {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		justify-content: center;
+	}
+
+	.image-container img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover; /* Asegura que la imagen cubra completamente el contenedor */
+	}
+
 	.section-heading span {
 		display: inline-block;
 	}
+
 	.scroll-section {
 		padding: 20px;
 	}
 
-	.grid-container {
-		display: grid;
-		grid-template-columns: repeat(1, 1fr); /* 1 columna en móviles */
-		grid-template-rows: repeat(auto-fill, minmax(200px, 1fr)); /* Ajusta la altura de las filas */
-		gap: 20px;
-		max-width: 90%;
-		margin: 0 auto;
-
-		@media (min-width: 768px) {
-			grid-template-columns: repeat(3, 1fr); /* 3 columnas en pantallas grandes */
-		}
+	
+	.text-p-big {
+		font-size: 2.5rem;
+		color: #000;
+		margin-top: 30px;
 	}
-
-	.grid-item {
+	.image-button {
+		position: relative; /* Posiciona los elementos de forma relativa para superponer el texto */
+		border: none; /* Elimina el borde del botón */
+		padding: 0; /* Elimina el padding por defecto */
+		background: none; /* Elimina el fondo por defecto */
+		cursor: pointer; /* Cambia el cursor para indicar que es un botón */
+		margin-top: 45px;
 		display: flex;
 		justify-content: center;
-		width: 100%; /* Asegura que el item use todo el ancho disponible */
-		margin-bottom: 20px;
 	}
 
-	.card {
-		width: 100%;
-		max-width: 100%; /* Evita que la tarjeta se expanda más allá del contenedor */
-		display: flex;
-		flex-direction: column; /* Permite que el contenido se ajuste verticalmente */
+	.image-button img {
+		display: block; /* Elimina el espacio inferior alrededor de la imagen */
+		width: 60%; /* Asegura que la imagen ocupe el 100% del botón */
+		height: auto; /* Mantiene la proporción de la imagen */
 	}
 
-	.card img {
-		border-radius: 0.5rem;
-		width: 100%; /* Asegura que la imagen se ajuste al ancho de la tarjeta */
-		height: auto;
+	.button-text {
+		position: absolute; /* Permite colocar el texto sobre la imagen */
+		top: 50%; /* Centra verticalmente el texto */
+		left: 30%; /* Centra horizontalmente el texto */
+		transform: translate(+20%, -70%); /* Ajusta la posición para centrar exactamente */
+		color: #000; /* Cambia el color del texto */
+		font-size: 1rem; /* Tamaño del texto */
+		font-weight: bold; /* Grosor del texto */
+		text-shadow: 1px 1px 2px black; /* Añade sombra al texto para mayor legibilidad */
+		pointer-events: none; /* Evita que el texto sea clicable, permitiendo que la imagen actúe como botón */
+		margin-right: 10px;
 	}
-
-	.card-body {
-		display: flex;
-		flex-direction: column;
-		padding: 10px;
-		background-color: #fff;
-	}
-	.card-content {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		flex-wrap: wrap;
-	}
-	.card-text {
-		flex: 1; /* Toma todo el espacio disponible menos el de la acción */
-	}
-
-	.card-action {
-		display: flex;
-		align-items: center;
-		justify-content: flex-end; /* Alinea el enlace "Más" a la derecha */
-	}
-
-	.card-title {
-		font-size: 1.5rem; /* Tamaño del texto del título */
-		margin: 0;
-	}
-
-	.card-body p {
-		margin: 5px 0;
-	}
-
-	.grid-item img {
-		width: 100%;
-		height: auto;
-		object-fit: cover;
-		border-radius: 8px;
-	}
-
-	.grid-item p {
-		text-align: center;
-		margin-top: 10px;
-		color: #000;
-	}
-
-	/**/
-
-	.text-p {
-		font-size: 1.5rem;
-		color: #000;
-	}
-
 	.split-section {
 		display: flex;
 		flex-wrap: wrap; /* Permite que los divs se envuelvan en pantallas pequeñas */
@@ -436,6 +382,7 @@
 		box-sizing: border-box;
 		text-align: left; /* Alinea el texto a la izquierda dentro del div */
 		gap: 10px; /* Espacio entre el texto y la imagen */
+		flex-wrap: wrap;
 	}
 
 	.split-left {
@@ -458,6 +405,7 @@
 	.arrow-icon {
 		width: 30px; /* Ajusta el tamaño de la imagen */
 		height: auto; /* Mantiene la proporción de la imagen */
+		margin-top: 7px;
 	}
 
 	@media (max-width: 768px) {
@@ -521,55 +469,33 @@
 			margin-right: 0; /* Elimina el margen derecho en pantallas pequeñas */
 		}
 	}
-	/**/
-
-	.scroll-container {
-		overflow: hidden;
-		white-space: nowrap;
-		width: 100%;
-	}
-
-	.scroll-text {
+	.split-right {
 		display: flex;
-		flex-direction: row;
-		will-change: transform; // Mejora el rendimiento de la animación
-	}
+		padding: 20px;
+		text-align: left;
+		gap: 10px;
+		flex-wrap: wrap;
 
-	.text-item {
-		min-width: 100%;
-		text-align: center;
-		padding: 10px;
-		box-sizing: border-box;
+		.grid-container {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr); /* Dos columnas */
+			gap: 10px; /* Espacio entre los elementos */
+			width: 100%; /* Asegura que el grid ocupe todo el ancho */
+		}
+        @media (min-width: 768px) {
+            .grid-item {
+			padding: 10px;
+			font-size: 1.5rem;
+			color: #000;
+		}
+        }
+        @media (max-width: 768px) {
+            .grid-item {
+			padding: 10px;
+			font-size: 1rem;
+			color: #000;
+		}
+        }
+		
 	}
-
-	.image-button {
-		position: relative; /* Posiciona los elementos de forma relativa para superponer el texto */
-		border: none; /* Elimina el borde del botón */
-		padding: 0; /* Elimina el padding por defecto */
-		background: none; /* Elimina el fondo por defecto */
-		cursor: pointer; /* Cambia el cursor para indicar que es un botón */
-		margin-top: 45px;
-		display: flex;
-		justify-content: center;
-	}
-
-	.image-button img {
-		display: block; /* Elimina el espacio inf1erior alrededor de la imagen */
-		width: 60%; /* Asegura que la imagen ocupe el 100% del botón */
-		height: auto; /* Mantiene la proporción de la imagen */
-	}
-
-	.button-text {
-		position: absolute; /* Permite colocar el texto sobre la imagen */
-		top: 50%; /* Centra verticalmente el texto */
-		left: 30%; /* Centra horizontalmente el texto */
-		transform: translate(+20%, -70%); /* Ajusta la posición para centrar exactamente */
-		color: #000; /* Cambia el color del texto */
-		font-size: 1rem; /* Tamaño del texto */
-		font-weight: bold; /* Grosor del texto */
-		text-shadow: 1px 1px 2px black; /* Añade sombra al texto para mayor legibilidad */
-		pointer-events: none; /* Evita que el texto sea clicable, permitiendo que la imagen actúe como botón */
-		margin-right: 10px;
-	}
-
 </style>
