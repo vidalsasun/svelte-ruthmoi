@@ -52,7 +52,7 @@
             justify-content: flex-start;
             margin-top: 60px;
             align-items: center;
-            height: calc(108vh - 60px); /* Ajusta la altura según la altura de tu navegación */
+            min-height: 100vh;
             text-align: center;            
         }
         
@@ -60,12 +60,12 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 20px;
-            width: 100%;
+            width: 70%;
             max-width: 100%;
             padding-left: 20px;
             padding-right: 20px;
             align-items: start;
-           
+            margin-top: 75px;
         }
     }
     
@@ -77,7 +77,7 @@
             justify-content: flex-start;
             margin-top: 60px;
             align-items: center;
-            height: calc(105vh - 70px); /* Ajusta la altura según la altura de tu navegación */
+            min-height: 100vh;
             text-align: center;
             margin-top: 70px; /* Espacio para evitar solapamiento con la navegación */
         }
@@ -227,7 +227,7 @@
     fieldset {
         padding: 5px;
         width: 100%;
-        max-width: 500px;
+        max-width: 90%;
     }
 
     label {
