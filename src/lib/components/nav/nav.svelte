@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { base } from '$app/paths';
-
 	import { onMount } from 'svelte';
 	import gsap from 'gsap';
 	import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
@@ -20,13 +19,21 @@
 				return Array.from(element.querySelectorAll('span'));
 			});
 		}
+
 		onMount(() => {
 			const ctx: gsap.Context = gsap.context(() => {
 				//NAVBAR
 				const open = document.querySelector('.container');
 				const close = document.querySelector('.close');
+				const navLinks = document.querySelectorAll('nav ul li a');
 				var tl = gsap.timeline({ defaults: { duration: 0.3, ease: 'expo.inOut' } });
-				
+
+				const closeMenu = () => {
+					tl.reverse().then(() => {
+						gsap.to(open, { rotation: 0, opacity: 1, pointerEvents: 'all' }); // Restaura el botón de menú cuando se cierra el menú
+					});
+				};
+
 				open.addEventListener('click', () => {
 					if (tl.reversed()) {
 						tl.play();
@@ -40,17 +47,16 @@
 					}
 				});
 
-				close.addEventListener('click', () => {
-					tl.reverse().then(() => {
-						gsap.to(open, { rotation: 0, opacity: 1, pointerEvents: 'all' }); // Restaura el botón de menú cuando se cierra el menú
-					});
+				close.addEventListener('click', closeMenu);
+
+				// Añadir listener a cada enlace
+				navLinks.forEach(link => {
+					link.addEventListener('click', closeMenu);
 				});
-				////////////////
 			});
 		});
 	}
 </script>
-
 
 <header class="header">
 	<div>
@@ -239,4 +245,3 @@
 	}
 
 </style>
-

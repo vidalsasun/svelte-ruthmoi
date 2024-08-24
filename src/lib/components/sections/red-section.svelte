@@ -1,4 +1,4 @@
-<div class="row" style="margin-bottom: 30px;">
+<div class="row" style="margin-bottom: 30px;margin-top: 30px;">
     <h3 class="section-heading">NI VANILLA, NI PORNO</h3>
 </div>
 <div class="row">
