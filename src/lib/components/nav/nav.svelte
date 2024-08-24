@@ -36,8 +36,7 @@
 							.to('nav', { height: '100vh' })
 							.to('nav', { paddingLeft: '5%' })
 							.to('nav ul li a', { opacity: 1, pointerEvents: 'all', stagger: 0.1 })
-							.to('.close', { opacity: 1, pointerEvents: 'all' })
-							.to('nav h2', { opacity: 1 });
+							.to('.close', { opacity: 1, pointerEvents: 'all' });
 					}
 				});
 
@@ -88,9 +87,7 @@
     z-index: 10; /* Asegura que la navegación esté por encima de otros contenidos */
     background-color: #fff; /* Asegura que tenga un fondo si es necesario */
 	}
-	.invert-colors {
-		filter: invert(100%) brightness(2) contrast(0.8);
-	}
+
 	//CUSTOM
 
 
@@ -185,15 +182,6 @@
 		pointer-events: none;
 	}
 
-	nav h2 {
-		position: absolute;
-		left: 5%;
-		opacity: 0;
-		pointer-events: none;
-		color: #fff;
-		font-size: 2em;
-	}
-
 	nav .close div::before,
 	nav .close div::after {
 		content: '';
@@ -216,11 +204,6 @@
 		background: #000;
 	}
 
-	@media (max-width: 992px) {
-		h1 {
-			font-size: 25px;
-		}
-	}
 	///////////////////
     /// 
     /// 
@@ -254,11 +237,6 @@
 		letter-spacing: 0.5em;
 	}
 	}
-	
-	
-	.logo-padding{
-		padding-left:5%;
-	}
-    
+
 </style>
 

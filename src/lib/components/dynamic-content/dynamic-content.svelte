@@ -170,7 +170,6 @@
 <style lang="scss">
 	// SCROLL CONTENT
 	@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-	@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap');
 
 	$bg-gradient: linear-gradient(180deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.3) 100%);
 
@@ -179,20 +178,7 @@
 		user-select: none;
 	}
 
-	a {
-		color: #fff;
-		text-decoration: none;
-	}
 
-	body {
-		margin: 0;
-		padding: 0;
-		height: 100vh;
-		color: white;
-		background: black;
-		font-family: 'Cormorant Garamond', serif;
-		text-transform: uppercase;
-	}
 
 	h2 {
 		font-size: clamp(1rem, 3vw, 3rem);
@@ -205,19 +191,6 @@
 		max-width: 1200px;
 	}
 
-	header {
-		position: fixed;
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		padding: 0 5%;
-		width: 100%;
-		z-index: 3;
-		height: 4em;
-		font-family: 'Bebas Neue', sans-serif;
-		font-size: clamp(0.66rem, 2vw, 1rem);
-		letter-spacing: 0.5em;
-	}
 
 	section {
 		height: 100%;
@@ -249,17 +222,9 @@
 				z-index: 2;
 			}
 
-			.clip-text {
-				overflow: hidden;
-			}
 		}
 	}
 
-	.first {
-		.bg {
-			background-image: $bg-gradient, url('$lib/assets/content/pizza-girl_960.jpg');
-		}
-	}
 
 	.second {
 		.bg {
@@ -292,7 +257,5 @@
 			background-position: 50% 45%;
 		}
 	}
-	h2 * {
-		will-change: transform;
-	}
+
 </style>

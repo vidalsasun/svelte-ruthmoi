@@ -68,7 +68,13 @@
   
   <div class="nav-dots">
     {#each messages as _, index}
-      <div class="nav-dot" on:click={() => scrollToText(index)}></div>
+      <div
+        class="nav-dot"
+        role="button"
+        tabindex="0"
+        on:click={() => scrollToText(index)}
+        on:keydown={(e) => e.key === 'Enter' || e.key === ' ' ? scrollToText(index) : null}
+      ></div>
     {/each}
   </div>
   

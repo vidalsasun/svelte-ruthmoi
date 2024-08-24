@@ -5,7 +5,9 @@
 	import gsap from 'gsap';
 	import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 	import Nav from './nav/nav.svelte';
-	import ScrollingText from './scroling-text/scrollingtext.svelte';
+	import RedSection from './sections/red-section.svelte';
+	import Experience from './sections/experience.svelte';
+	import Reviews from './sections/reviews.svelte';
 
 	const items = [
 		{
@@ -39,15 +41,7 @@
 			description: 'LOREM IPSUM DOLOR SIT AMET'
 		}
 	];
-	const messages = [
-		{
-			message: 'LOREM IPSUM DOLOR SIT AMET',
-			user: 'ANA',
-			age: '53 AÑOS'
-		},
-		{ message: 'SOME OTHER TEXT FOR ANIMATION', user: 'JUAN', age: '30 AÑOS' },
-		{ message: 'ANOTHER MESSAGE TO SCROLL', user: 'MARTA', age: '45 AÑOS' }
-	];
+	
 	if (typeof window !== 'undefined') {
 		gsap.registerPlugin(ScrollTrigger);
 
@@ -186,14 +180,7 @@
 		<div class="inner">
 			<div class="bg">
 				<div class="split-section">
-					<div class="split-left">
-						<p class="text-p">18 AÑOS DE EXPERIENCIA</p>
-						<img src="../content/arrow-index.png" alt="index" class="arrow-icon" />
-					</div>
-					<div class="split-right">
-						<p class="text-p">MÁS DE 5.000 VIDAS TRANSFORMADAS</p>
-						<img src="../content/arrow-index.png" alt="index" class="arrow-icon" />
-					</div>
+					<Experience />
 				</div>
 			</div>
 		</div>
@@ -205,14 +192,7 @@
 	<div class="outer">
 		<div class="inner">
 			<div class="bg">
-				<div class="split-section">
-					<div class="split-left-boys">
-						<ScrollingText {messages} />
-					</div>
-					<div class="split-right-boys">
-						<img class="img-boys" src="../content/boys_960.png" alt="index" />
-					</div>
-				</div>
+				<Reviews />
 			</div>
 		</div>
 	</div>
@@ -222,77 +202,14 @@
 	<div class="outer">
 		<div class="inner">
 			<div class="bg upper-row">
-				<!-- Row 1 -->
-				<div class="row" style="margin-bottom: 30px;">
-					<h3 class="section-heading">NI VANILLA, NI PORNO</h3>
-				</div>
-				<!-- Row 2 -->
-				<div class="row">
-					<h2 class="section-heading">SE TRATA DE SEXO REAL</h2>
-				</div>
-				<!-- Row 3 -->
-				<div class="row description" style="margin-top: 30px;">
-					<h3 class="section-heading">
-						SEX AND PSICO NACE PARA RESOLVER TUS PROBLEMAS SEXUALES DESDE DENTRO: COMPRENDER QUÉ ES
-						LO QUE TÚ REALMENTE DESEAS, QUÉ ESPERAR DE CADA RELACIÓN Y COMO REENFOCAR TU VIDA SEXUAL
-						PARA QUE DISFRUTES AL 100%, SIN ADITIVOS.
-					</h3>
-				</div>
-
-				<div class="row description" style="margin-top: 30px;">
-					<button class="image-button">
-						<img src="../content/conocenos.png" alt="Conócenos" />
-						<span class="button-text">CONÓCENOS</span>
-					</button>
-				</div>
+				<RedSection />
 			</div>
 		</div>
 	</div>
 </section>
 
 <style lang="scss">
-	body {
-		margin: 0;
-		padding: 0;
-		height: 100vh;
-		color: #000;
-		background: #fff;
-		font-family: 'Cormorant Garamond', serif;
-		text-transform: uppercase;
-		overflow-x: hidden; /* Oculta el desbordamiento horizontal */
-	}
-	h1 {
-		font-size: clamp(1rem, 2vw, 2rem); /* Ajusta los valores según sea necesario */
-		font-weight: 400;
-		text-align: center;
-		letter-spacing: 0.2em;
-		color: #000;
-		width: 90vw;
-		max-width: 1200px;
-		margin: 0;
-	}
-
-	h2 {
-		font-size: clamp(1.5rem, 4vw, 4rem); /* Ajusta los valores según sea necesario */
-		font-weight: 400;
-		text-align: center;
-		letter-spacing: 0.2em;
-		color: #000;
-		width: 90vw;
-		max-width: 1200px;
-		margin: 0;
-	}
-
-	h3 {
-		font-size: clamp(1rem, 3vw, 2rem); /* Ajusta los valores según sea necesario */
-		font-weight: 400;
-		text-align: center;
-		letter-spacing: 0.2em;
-		color: #000;
-		width: 90vw;
-		max-width: 1200px;
-		margin: 0;
-	}
+	
 	.upper-row {
 		margin-top: 50px;
 		margin-bottom: 50px;
@@ -329,9 +246,7 @@
 		position: relative;
 		z-index: 10; /* Asegúrate de que el nav esté por encima del contenido */
 	}
-	.section-heading span {
-		display: inline-block;
-	}
+
 	.scroll-section {
 		padding: 20px;
 	}
@@ -415,10 +330,6 @@
 
 	/**/
 
-	.text-p {
-		font-size: 1.5rem;
-		color: #000;
-	}
 
 	.split-section {
 		display: flex;
@@ -427,120 +338,9 @@
 		box-sizing: border-box;
 	}
 
-	.split-left,
-	.split-right {
-		flex: 1; /* Cada div ocupa el 50% del ancho en pantallas grandes */
-		display: flex;
-		align-items: center; /* Alinea el contenido verticalmente en el centro */
-		padding: 20px;
-		box-sizing: border-box;
-		text-align: left; /* Alinea el texto a la izquierda dentro del div */
-		gap: 10px; /* Espacio entre el texto y la imagen */
-	}
-
-	.split-left {
-		justify-content: center; /* Alinea el contenido al principio en pantallas grandes */
-	}
-
-	.split-right {
-		justify-content: center; /* Alinea el contenido al principio en pantallas grandes */
-	}
-
-	.split-left h2,
-	.split-right h2 {
-		font-size: clamp(1.5rem, 1vw, 2rem);
-		font-weight: 400;
-		letter-spacing: 0.2em;
-		color: #000;
-		margin: 0;
-	}
-
-	.arrow-icon {
-		width: 30px; /* Ajusta el tamaño de la imagen */
-		height: auto; /* Mantiene la proporción de la imagen */
-	}
-
-	@media (max-width: 768px) {
-		.split-left,
-		.split-right {
-			flex-direction: column; /* Coloca el texto encima de la imagen en pantallas pequeñas */
-			align-items: center; /* Centra el contenido horizontalmente en pantallas pequeñas */
-			width: 100%; /* Cada div ocupa el 100% del ancho en pantallas pequeñas */
-			margin-bottom: 10px; /* Espacio entre los divs */
-			text-align: center; /* Centra el texto en pantallas pequeñas */
-		}
-
-		.split-left h2,
-		.split-right h2 {
-			margin-bottom: 10px; /* Espacio entre el texto y la imagen en pantallas pequeñas */
-			margin-right: 0; /* Elimina el margen derecho en pantallas pequeñas */
-		}
-	}
-	.split-left-boys,
-	.split-right-boys {
-		flex: 1; /* Cada div ocupa el 50% del ancho en pantallas grandes */
-		display: flex;
-		align-items: center; /* Alinea el contenido verticalmente en el centro */
-		justify-content: center; /* Alinea el contenido horizontalmente en el centro */
-		padding: 20px;
-		box-sizing: border-box;
-		text-align: center; /* Alinea el texto al centro dentro del div */
-		gap: 10px; /* Espacio entre el texto y la imagen */
-		flex-wrap: wrap; /* Permite que el contenido se envuelva en pantallas pequeñas */
-	}
-
-	.split-left-boys h2,
-	.split-right-boys h2 {
-		font-size: clamp(1.5rem, 1vw, 2rem); /* Tamaño del texto adaptativo */
-		font-weight: 400;
-		letter-spacing: 0.2em;
-		color: #000;
-		margin: 0;
-	}
-
-	.img-boys {
-		border-radius: 15px; /* Redondea las esquinas de la imagen */
-		width: 100%; /* Asegura que la imagen no se expanda más allá del contenedor */
-		height: auto; /* Mantiene la proporción de la imagen */
-	}
-
-	/* Estilo específico para pantallas pequeñas */
-	@media (max-width: 768px) {
-		.split-left-boys,
-		.split-right-boys {
-			flex-direction: column; /* Apila el contenido verticalmente en pantallas pequeñas */
-			align-items: center; /* Centra el contenido horizontalmente */
-			width: 100%; /* Cada div ocupa el 100% del ancho en pantallas pequeñas */
-			margin-bottom: 10px; /* Espacio entre los divs */
-			text-align: center; /* Centra el texto en pantallas pequeñas */
-		}
-
-		.split-left-boys h2,
-		.split-right-boys h2 {
-			margin-bottom: 10px; /* Espacio entre el texto y la imagen en pantallas pequeñas */
-			margin-right: 0; /* Elimina el margen derecho en pantallas pequeñas */
-		}
-	}
 	/**/
 
-	.scroll-container {
-		overflow: hidden;
-		white-space: nowrap;
-		width: 100%;
-	}
 
-	.scroll-text {
-		display: flex;
-		flex-direction: row;
-		will-change: transform; // Mejora el rendimiento de la animación
-	}
-
-	.text-item {
-		min-width: 100%;
-		text-align: center;
-		padding: 10px;
-		box-sizing: border-box;
-	}
 
 	.image-button {
 		position: relative; /* Posiciona los elementos de forma relativa para superponer el texto */

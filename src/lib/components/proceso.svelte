@@ -5,6 +5,9 @@
 	import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 	import Nav from './nav/nav.svelte';
 	import ScrollingText from './scroling-text/scrollingtext.svelte';
+	import RedSection from './sections/red-section.svelte';
+	import Experience from './sections/experience.svelte';
+	import Reviews from './sections/reviews.svelte';
 
 	// Importar el JSON mock
 	const gridItems = [
@@ -22,17 +25,7 @@
 			text: 'UN PROCESO CON UNOS OBJETIVOS MARCADOS DESDE EL INICIO, FÁCIL DE APLICAR EN TU VIDA PARA QUE TENGAS RESULTADOS REALES.'
 		},
 		{ text: 'EXPANDE TUS HORIZONTES' }
-	];
-
-	const messages = [
-		{
-			message: 'LOREM IPSUM DOLOR SIT AMET',
-			user: 'ANA',
-			age: '53 AÑOS'
-		},
-		{ message: 'SOME OTHER TEXT FOR ANIMATION', user: 'JUAN', age: '30 AÑOS' },
-		{ message: 'ANOTHER MESSAGE TO SCROLL', user: 'MARTA', age: '45 AÑOS' }
-	];
+	];	
 
 	if (typeof window !== 'undefined') {
 		gsap.registerPlugin(ScrollTrigger);
@@ -119,38 +112,38 @@
 		<div class="inner">
 			<div class="bg upper-row">
 				<div class="row" style="margin-bottom: 30px;">
-					<h3 class="section-heading">EL CÓDIGO DE LA COCREACION</h3>
+					<h2 class="section-heading">EL CÓDIGO DE LA COCREACION</h2>
 				</div>
 				<div class="row">
-					<h2 class="section-heading">
+					<h1 class="section-heading">
 						SIEMPRE TE HAN DICHO QUE EL SEXO ES ALGO ANIMAL Y UN ELEMENTO DE PLACER AISLADO.
-					</h2>
+					</h1>
 				</div>
                 <div class="row">
-					<h2 class="section-heading">
+					<h1 class="section-heading">
 						LA REALIDAD ES QUE, COMO SERES HUMANOS, NUNCA ESTAREMOS COMPLETOS SI NO ESTAMOS SATISFECHOS CON NUESTRA VIDA SEXUAL.
-					</h2>
+					</h1>
 				</div>
                 <div class="row">
-					<h2 class="section-heading">
+					<h1 class="section-heading">
 						POR QUE LOS SERES HUMANOS SOMOS UN ÚNICO SISTEMA, CON LA MISMA BASE BIOQUÍMICA PARA TODO Y CUANDO UNO FALLA, TODO FALLA.
-					</h2>
+					</h1>
 				</div>
                 <div class="row">
-					<h2 class="section-heading">
+					<h1 class="section-heading">
 						POR ESO, CUANDO NO ESTÁS SATISFECHO EN LA CAMA, SIEMPRE HAY ALGO QUE FALLA EN TU DÍA A DÍA: YA SEA EN LA ESFERA ÍNTIMA, LA PRIVADA, LA SOCIAL O LA LABORAL.
-					</h2>
+					</h1>
 				</div>
                 <div class="row">
-					<h2 class="section-heading">
+					<h1 class="section-heading">
 						CUANDO ERES CAPAZ DE RELACIONAR LO QUE OCURRE EN TU SEXUALIDAD CON TU PERSONALIDAD Y TU FORMA DE VIVIR, CON CÓMO AFRONTAS LO QUE PIENSAS, SIENTES Y HACER, ES CUANDO REALMENTE ERES CAPAZ DE REDIMENSIONAR EL PLACER, EN LA CAMA Y FUERA DE ELLA.
-					</h2>
+					</h1>
 				</div>
 
                 <div class="row">
-					<h2 class="section-heading">
+					<h1 class="section-heading">
 						Y ESO SÓLO LO LOGRAS CUANDO DESCUBRES TU <b>PERSONALIDAD SEXUAL.</b>
-					</h2>
+					</h1>
 				</div>
 
 			</div>
@@ -166,7 +159,7 @@
 					<div class="split-left">
 						<h3 class="text-p">DESEO</h3>
 						<h2 class="text-p">EL DESEO</h2>
-                        <h3 class="text-p">UNIENDO LOS PRONCIPIOS DE LA PSICOLOGÍA Y LA SEXOLOGÍA, HE CREADO UN PROCESO LLAMADO <b>DESEO</b>, CUYO ÚNICO OBJETIVO ES AYUDARTE A DESCUBRIR Y DISFRUTAR DE TU ENERGÍA VITAL.</h3>
+                        <h3 class="text-p">UNIENDO LOS PRINCIPIOS DE LA PSICOLOGÍA Y LA SEXOLOGÍA, HE CREADO UN PROCESO LLAMADO <b>DESEO</b>, CUYO ÚNICO OBJETIVO ES AYUDARTE A DESCUBRIR Y DISFRUTAR DE TU ENERGÍA VITAL.</h3>
                         <h3 class="text-p">PARA LOGRARLO TRABAJAMOS EN TRES FASES.</h3>
                     </div>
 					<div class="split-right">
@@ -203,14 +196,7 @@
 		<div class="inner">
 			<div class="bg">
 				<div class="split-section">
-					<div class="split-left">
-						<p class="text-p">18 AÑOS DE EXPERIENCIA</p>
-						<img src="../content/arrow-index.png" alt="index" class="arrow-icon" />
-					</div>
-					<div class="split-right">
-						<p class="text-p">MÁS DE 5.000 VIDAS TRANSFORMADAS</p>
-						<img src="../content/arrow-index.png" alt="index" class="arrow-icon" />
-					</div>
+					<Experience />
 				</div>
 			</div>
 		</div>
@@ -221,15 +207,8 @@
 <section class="scroll-section">
 	<div class="outer">
 		<div class="inner">
-			<div class="bg">
-				<div class="split-section">
-					<div class="split-left-boys">
-						<ScrollingText {messages} />
-					</div>
-					<div class="split-right-boys">
-						<img class="img-boys" src="../content/boys_960.png" alt="index" />
-					</div>
-				</div>
+			<div class="bg">			
+				<Reviews />
 			</div>
 		</div>
 	</div>
@@ -239,65 +218,15 @@
 	<div class="outer">
 		<div class="inner">
 			<div class="bg upper-row">
-				<div class="row" style="margin-bottom: 30px;">
-					<h3 class="section-heading">NI VANILLA, NI PORNO</h3>
-				</div>
-				<div class="row">
-					<h2 class="section-heading">SE TRATA DE SEXO REAL</h2>
-				</div>
-				<div class="row description" style="margin-top: 30px;">
-					<h3 class="section-heading">
-						SEX AND PSICO NACE PARA RESOLVER TUS PROBLEMAS SEXUALES DESDE DENTRO: COMPRENDER QUÉ ES
-						LO QUE TÚ REALMENTE DESEAS, QUÉ ESPERAR DE CADA RELACIÓN Y COMO REENFOCAR TU VIDA SEXUAL
-						PARA QUE DISFRUTES AL 100%, SIN ADITIVOS.
-					</h3>
-				</div>
-
-				<div class="row description" style="margin-top: 30px;">
-					<button class="image-button">
-						<img src="../content/conocenos.png" alt="Conócenos" />
-						<span class="button-text">CONÓCENOS</span>
-					</button>
-				</div>
+				<RedSection />
 			</div>
 		</div>
 	</div>
 </section>
 
 <style lang="scss">
-	body {
-		margin: 0;
-		padding: 0;
-		height: 100vh;
-		color: #000;
-		background: #fff;
-		font-family: 'Cormorant Garamond', serif;
-		text-transform: uppercase;
-		overflow-x: hidden; /* Oculta el desbordamiento horizontal */
-	}
+	
 
-	h1,
-	h2,
-	h3 {
-		font-weight: 400;
-		text-align: center;
-		letter-spacing: 0.2em;
-		color: #000;
-		max-width: 1200px;
-		margin: 0;
-	}
-
-	h1 {
-		font-size: clamp(1rem, 2vw, 2rem); /* Ajusta los valores según sea necesario */
-	}
-
-	h2 {
-		font-size: clamp(1.5rem, 4vw, 4rem); /* Ajusta los valores según sea necesario */
-	}
-
-	h3 {
-		font-size: clamp(1rem, 3vw, 2rem); /* Ajusta los valores según sea necesario */
-	}
 
 	.upper-row {
 		margin-bottom: 50px;
@@ -355,54 +284,21 @@
 		object-fit: cover; /* Asegura que la imagen cubra completamente el contenedor */
 	}
 
-	.section-heading span {
-		display: inline-block;
-	}
 
 	.scroll-section {
 		padding: 20px;
 	}
 
-	.text-p-big {
-		font-size: 2.5rem;
-		color: #000;
-		margin-top: 30px;
-	}
+
     .text-p-left {
 		font-size: 2.5rem;
 		color: #000;
 		margin-top: 30px;
         text-align: left;
 	}
-	.image-button {
-		position: relative; /* Posiciona los elementos de forma relativa para superponer el texto */
-		border: none; /* Elimina el borde del botón */
-		padding: 0; /* Elimina el padding por defecto */
-		background: none; /* Elimina el fondo por defecto */
-		cursor: pointer; /* Cambia el cursor para indicar que es un botón */
-		margin-top: 45px;
-		display: flex;
-		justify-content: center;
-	}
 
-	.image-button img {
-		display: block; /* Elimina el espacio inferior alrededor de la imagen */
-		width: 60%; /* Asegura que la imagen ocupe el 100% del botón */
-		height: auto; /* Mantiene la proporción de la imagen */
-	}
 
-	.button-text {
-		position: absolute; /* Permite colocar el texto sobre la imagen */
-		top: 50%; /* Centra verticalmente el texto */
-		left: 30%; /* Centra horizontalmente el texto */
-		transform: translate(+20%, -70%); /* Ajusta la posición para centrar exactamente */
-		color: #000; /* Cambia el color del texto */
-		font-size: 1rem; /* Tamaño del texto */
-		font-weight: bold; /* Grosor del texto */
-		text-shadow: 1px 1px 2px black; /* Añade sombra al texto para mayor legibilidad */
-		pointer-events: none; /* Evita que el texto sea clicable, permitiendo que la imagen actúe como botón */
-		margin-right: 10px;
-	}
+
 	.split-section {
 		display: flex;
 		flex-wrap: wrap; /* Permite que los divs se envuelvan en pantallas pequeñas */
@@ -439,11 +335,7 @@
 		margin: 0;
 	}
 
-	.arrow-icon {
-		width: 30px; /* Ajusta el tamaño de la imagen */
-		height: auto; /* Mantiene la proporción de la imagen */
-		margin-top: 7px;
-	}
+
 
 	@media (max-width: 768px) {
 		.split-left,
@@ -461,51 +353,8 @@
 			margin-right: 0; /* Elimina el margen derecho en pantallas pequeñas */
 		}
 	}
-	.split-left-boys,
-	.split-right-boys {
-		flex: 1; /* Cada div ocupa el 50% del ancho en pantallas grandes */
-		display: flex;
-		align-items: center; /* Alinea el contenido verticalmente en el centro */
-		justify-content: center; /* Alinea el contenido horizontalmente en el centro */
-		padding: 20px;
-		box-sizing: border-box;
-		text-align: center; /* Alinea el texto al centro dentro del div */
-		gap: 10px; /* Espacio entre el texto y la imagen */
-		flex-wrap: wrap; /* Permite que el contenido se envuelva en pantallas pequeñas */
-	}
+	
 
-	.split-left-boys h2,
-	.split-right-boys h2 {
-		font-size: clamp(1.5rem, 1vw, 2rem); /* Tamaño del texto adaptativo */
-		font-weight: 400;
-		letter-spacing: 0.2em;
-		color: #000;
-		margin: 0;
-	}
-
-	.img-boys {
-		border-radius: 15px; /* Redondea las esquinas de la imagen */
-		width: 100%; /* Asegura que la imagen no se expanda más allá del contenedor */
-		height: auto; /* Mantiene la proporción de la imagen */
-	}
-
-	/* Estilo específico para pantallas pequeñas */
-	@media (max-width: 768px) {
-		.split-left-boys,
-		.split-right-boys {
-			flex-direction: column; /* Apila el contenido verticalmente en pantallas pequeñas */
-			align-items: center; /* Centra el contenido horizontalmente */
-			width: 100%; /* Cada div ocupa el 100% del ancho en pantallas pequeñas */
-			margin-bottom: 10px; /* Espacio entre los divs */
-			text-align: center; /* Centra el texto en pantallas pequeñas */
-		}
-
-		.split-left-boys h2,
-		.split-right-boys h2 {
-			margin-bottom: 10px; /* Espacio entre el texto y la imagen en pantallas pequeñas */
-			margin-right: 0; /* Elimina el margen derecho en pantallas pequeñas */
-		}
-	}
 	.split-right {
 		display: flex;
 		padding: 20px;

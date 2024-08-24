@@ -4,11 +4,7 @@
 
 <footer class="footer">
     <div class="footer-content">
-       <!--  <div class="footer-row logo-row">
-            <a href="{base}/">
-                <img alt="SEXANDPSICO" src="{base}/nav-logo.png" />
-            </a>
-        </div> -->
+      
         <div class="footer-row info-row">
             <div class="column contact-info">
                 <div>Contacto:</div>
@@ -60,15 +56,6 @@
     margin-bottom: 1em;
 }
 
-.logo-row {
-    margin-bottom: 1em;
-}
-
-.logo-row img {
-    width: 80%;
-    max-width: 200px; /* Ajusta el tamaño máximo según tus necesidades */
-    padding-left: 5%;
-}
 
 
 .image-button {
@@ -115,30 +102,7 @@
     text-align: center;
 }
 
-.subscribe {
-    text-align: center;
-}
 
-.subscribe input {
-    width: 100%;
-    padding: 0.5em;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-bottom: 0.5em;
-}
-
-.subscribe button {
-    padding: 0.5em 1em;
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.subscribe button:hover {
-    background-color: #0056b3;
-}
 
 @media (min-width: 768px) {
     .footer-row {
