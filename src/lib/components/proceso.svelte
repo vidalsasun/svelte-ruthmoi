@@ -1,31 +1,31 @@
 <script lang="ts">
 	import { base } from '$app/paths';
-	import { onMount } from 'svelte';
+
+import { onMount } from 'svelte';
 	import gsap from 'gsap';
 	import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 	import Nav from './nav/nav.svelte';
-	import ScrollingText from './scroling-text/scrollingtext.svelte';
 	import RedSection from './sections/red-section.svelte';
 	import Experience from './sections/experience.svelte';
 	import Reviews from './sections/reviews.svelte';
-
-	// Importar el JSON mock
-	const gridItems = [
+	
+	const fases = [
 		{
-			text: 'UNA METODOLOGÍA QUE COMBINA SEXOLOGÍA Y PSICOLOGÍA PARA QUE PONGAS EL FOCO EN TU SEXUALIDAD Y AUMENTES TU DESEO.'
+			title: 'FASE INCONSCIENTE',
+			image: '../content/procedimiento-fractal2.png',
+			description: 'LAS FANTASÍAS SEXUALES SON UNA ELABORACIÓN MENTAL VIVA QUE SE HA IDO COMPLETANDO Y TRANSFORMANDO A LO LARGO DE TODA TU VIDA, POR ESO, ADEMÁS DE EXCITARTE Y AYUDARTE A LLEGAR AL ORGASMO, SIRVEN PARA COMPRENDER DESDE EL INCONSCIENTE. PARA ESO, EN NUESTRO PROGRAMA EMPEZAMOS EXPLORANDO QUE TIPOS EXISTEN, CÓMO SE HAN FORMADO Y PARA QUÉ SIRVEN, CON EL OBJETIVO DE AYUDARTE A CONECTAR CON TUS VERDADEROS DESEOS.'
 		},
 		{
-			text: 'VERDADEROS EXPERTOS ACOMPAÑÁNDOTE A LOGRARLO, A TRABAJARLO Y A SENTIR COMO EMPIEZAS A DISFRUTAR DENTRO Y FUERA DE LA CAMA.'
-		},
-		{ text: 'UNA DECISIÓN DE COMO QUIERES VIVIR CONECTANDO TODOS LOS ASPECTOS DE TU VIDA.' },
-		{
-			text: 'UN PROCESO DE TRANSFORMACIÓN TANGIBLE QUE VES Y TOCAS REALMENTE A PARTIR DE DESCUBRIR, COMPRENDER Y DARLE RIENDA SUELTA A TUS DESEOS.'
+			title: 'FASE PRECONSCIENTE',
+			image: '../content/procedimiento-fractal3.png',
+			description: 'UNA VEZ ENTENDIDO QUÉ SON LAS FANTASÍAS, A PARTIR DE TU PROPIO RELATO ERÓTICO DESCUBRIRÁS TU ARQUETIPO SEXUAL Y CÓMO SE ASOCIA CON TU PERSONALIDAD Y CON TU VIDA. TE PERMITIRÁ SER MÁS CONSCIENTE DE CÓMO TE HAN AFECTADO TUS EXPERIENCIAS Y TRABAJARÁS TUS CREENCIAS ERRÓNEAS.'
 		},
 		{
-			text: 'UN PROCESO CON UNOS OBJETIVOS MARCADOS DESDE EL INICIO, FÁCIL DE APLICAR EN TU VIDA PARA QUE TENGAS RESULTADOS REALES.'
-		},
-		{ text: 'EXPANDE TUS HORIZONTES' }
-	];	
+			title: 'FASE CONSCIENTE',
+			image: '../content/procedimiento-fractal1.png',
+			description: 'HAY DOS GRANDES ENEMIGOS DE LA SEXUALIDAD SATISFACTORIA A LOS QUE INEVITABLEMENTE	ESTAMOS EXPUESTOS SOCIALMENTE: LA REPRESIÓN Y LA MITIFICACIÓN. POR UN LADO EL SEXO SIGUEN SIENDO TABÚ Y POR OTRO ESTÁ TOTALMENTE ESTEREOTIPADO Y ROMANTIZADO, COMPRENDER LA DIFERENCIA ENTRE LO QUE ES UNA SEXUALIDAD SATISFACTORIA Y LOS ESTEREOTIPOS SOCIALES ACTUALES HARÁ QUE ESTÉS CON LOS PIES EN LA TIERRA PARA QUE NO TENGAS UNAS EXPECTATIVAS TOTALMENTE IRREALES.'
+		}
+	];
 
 	if (typeof window !== 'undefined') {
 		gsap.registerPlugin(ScrollTrigger);
@@ -48,7 +48,7 @@
 		}
 		onMount(() => {
 			const ctx: gsap.Context = gsap.context(() => {
-				let rows = gsap.utils.toArray<HTMLElement>('.row');
+				let rows = gsap.utils.toArray<HTMLElement>('.row, .row-left');
 				const splitRowsChars = rows.map((row) =>
 					splitTextToChars(row.querySelectorAll('.section-heading')).flat()
 				);
@@ -111,79 +111,110 @@
 	<div class="outer">
 		<div class="inner">
 			<div class="bg upper-row">
-				<div class="row" style="margin-bottom: 30px;">
-					<h2 class="section-heading">EL CÓDIGO DE LA COCREACION</h2>
+				<div class="row-left">
+					<b><h3 class="section-heading">EL CÓDIGO DE LA COCREACION</h3></b>
 				</div>
-				<div class="row">
+				<div class="row-left">
 					<h1 class="section-heading">
 						SIEMPRE TE HAN DICHO QUE EL SEXO ES ALGO ANIMAL Y UN ELEMENTO DE PLACER AISLADO.
 					</h1>
 				</div>
-                <div class="row">
-					<h1 class="section-heading">
-						LA REALIDAD ES QUE, COMO SERES HUMANOS, NUNCA ESTAREMOS COMPLETOS SI NO ESTAMOS SATISFECHOS CON NUESTRA VIDA SEXUAL.
-					</h1>
+				<div class="row-left">
+					<h2 class="section-heading">
+						LA REALIDAD ES QUE, COMO SERES HUMANOS, NUNCA ESTAREMOS COMPLETOS SI NO ESTAMOS
+						SATISFECHOS CON NUESTRA VIDA SEXUAL.
+					</h2>
 				</div>
-                <div class="row">
-					<h1 class="section-heading">
-						POR QUE LOS SERES HUMANOS SOMOS UN ÚNICO SISTEMA, CON LA MISMA BASE BIOQUÍMICA PARA TODO Y CUANDO UNO FALLA, TODO FALLA.
-					</h1>
+				<div class="row-left">
+					<h2 class="section-heading">
+						POR QUE LOS SERES HUMANOS SOMOS UN ÚNICO SISTEMA, CON LA MISMA BASE BIOQUÍMICA PARA TODO
+						Y CUANDO UNO FALLA, TODO FALLA.
+					</h2>
 				</div>
-                <div class="row">
-					<h1 class="section-heading">
-						POR ESO, CUANDO NO ESTÁS SATISFECHO EN LA CAMA, SIEMPRE HAY ALGO QUE FALLA EN TU DÍA A DÍA: YA SEA EN LA ESFERA ÍNTIMA, LA PRIVADA, LA SOCIAL O LA LABORAL.
-					</h1>
+				<div class="row-left">
+					<h2 class="section-heading">
+						POR ESO, CUANDO NO ESTÁS SATISFECHO EN LA CAMA, SIEMPRE HAY ALGO QUE FALLA EN TU DÍA A
+						DÍA: YA SEA EN LA ESFERA ÍNTIMA, LA PRIVADA, LA SOCIAL O LA LABORAL.
+					</h2>
 				</div>
-                <div class="row">
-					<h1 class="section-heading">
-						CUANDO ERES CAPAZ DE RELACIONAR LO QUE OCURRE EN TU SEXUALIDAD CON TU PERSONALIDAD Y TU FORMA DE VIVIR, CON CÓMO AFRONTAS LO QUE PIENSAS, SIENTES Y HACER, ES CUANDO REALMENTE ERES CAPAZ DE REDIMENSIONAR EL PLACER, EN LA CAMA Y FUERA DE ELLA.
-					</h1>
+				<div class="row-left">
+					<h2 class="section-heading">
+						CUANDO ERES CAPAZ DE RELACIONAR LO QUE OCURRE EN TU SEXUALIDAD CON TU PERSONALIDAD Y TU
+						FORMA DE VIVIR, CON CÓMO AFRONTAS LO QUE PIENSAS, SIENTES Y HACER, ES CUANDO REALMENTE
+						ERES CAPAZ DE REDIMENSIONAR EL PLACER, EN LA CAMA Y FUERA DE ELLA.
+					</h2>
 				</div>
 
-                <div class="row">
-					<h1 class="section-heading">
+				<div class="row-left">
+					<h2 class="section-heading">
 						Y ESO SÓLO LO LOGRAS CUANDO DESCUBRES TU <b>PERSONALIDAD SEXUAL.</b>
+					</h2>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<div class="img-division">
+    <img src="../content/arrow-index.png" alt="index" class="arrow-icon" />
+</div>
+<section>
+	<div class="outer">
+		<div class="inner">
+			<div class="bg upper-row">
+				<div class="row-left">
+					<b><h3 class="section-heading">DESEO</h3></b>
+				</div>
+				<div class="row-left">
+					<h1 class="section-heading">
+						EL DESEO
 					</h1>
 				</div>
-
+				<div class="row-left">
+					<h2 class="section-heading">
+						UNIENDO LOS PRINCIPIOS DE LA PSICOLOGÍA Y LA SEXOLOGÍA, HE CREADO UN PROCESO LLAMADO <b
+				>DESEO</b
+			>, CUYO ÚNICO OBJETIVO ES AYUDARTE A DESCUBRIR Y DISFRUTAR DE TU ENERGÍA VITAL.
+					</h2>
+				</div>
+				<div class="row-left">
+					<h2 class="section-heading">
+						PARA LOGRARLO TRABAJAMOS EN TRES FASES
+					</h2>
+				</div>
+				
 			</div>
 		</div>
 	</div>
 </section>
 
+
+
+
 <section class="scroll-section">
 	<div class="outer">
 		<div class="inner">
 			<div class="bg">
-				<div class="split-section">
-					<div class="split-left">
-						<h3 class="text-p">DESEO</h3>
-						<h2 class="text-p">EL DESEO</h2>
-                        <h3 class="text-p">UNIENDO LOS PRINCIPIOS DE LA PSICOLOGÍA Y LA SEXOLOGÍA, HE CREADO UN PROCESO LLAMADO <b>DESEO</b>, CUYO ÚNICO OBJETIVO ES AYUDARTE A DESCUBRIR Y DISFRUTAR DE TU ENERGÍA VITAL.</h3>
-                        <h3 class="text-p">PARA LOGRARLO TRABAJAMOS EN TRES FASES.</h3>
-                    </div>
-					<div class="split-right">
-						<div class="grid-container">
-    						<div class="grid-item">
-                                <img src="../content/procedimiento-fractal2.png" alt="fractal-1" />
-                                <h2 class="text-p-left">
-                                    <b>FASE INCONSCIENTE</b>
-                                </h2>
-                            </div>
-    						<div class="grid-item">
-                                <img src="../content/procedimiento-fractal3.png" alt="fractal-2" />
-                                <h2 class="text-p-left">
-                                    <b>FASE PRECONSCIENTE</b>
-                                </h2>
-                            </div>
-    						<div class="grid-item">
-                                <img src="../content/procedimiento-fractal1.png" alt="fractal-3" />
-                                <h2 class="text-p-left">
-                                    <b>FASE CONSCIENTE</b>
-                                </h2>
-                            </div>
+				<div class="grid-container">
+					<!-- Renderiza dinámicamente las tarjetas a partir del JSON -->
+					{#each fases as item}
+						<div class="grid-item">
+							<!-- Usa las clases de DaisyUI para las tarjetas -->
+							<div class="card w-96 bg-base-100 shadow-xl">
+								<figure>
+									<img src={item.image} alt={item.title} />
+								</figure>
+								<div class="card-body">
+									<div class="card-content">
+										<div class="card-text">
+											<p class="card-title">{item.title}</p>
+											<p>{item.description}</p>
+										</div>
+										
+									</div>
+								</div>
+							</div>
 						</div>
-					</div>
+					{/each}
 				</div>
 			</div>
 		</div>
@@ -207,7 +238,7 @@
 <section class="scroll-section">
 	<div class="outer">
 		<div class="inner">
-			<div class="bg">			
+			<div class="bg">
 				<Reviews />
 			</div>
 		</div>
@@ -225,30 +256,13 @@
 </section>
 
 <style lang="scss">
-	
-
-
-	.upper-row {
-		margin-bottom: 50px;
-	}
-
 	section {
 		width: 100%;
 		position: relative;
 		background-color: #fff;
 		padding: 20px; /* Añade relleno para asegurar que el contenido no se sobreponga */
 		box-sizing: border-box; /* Incluye el padding en el tamaño total del elemento */
-	}
-
-	.outer,
-	.inner,
-	.bg {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		width: 100%;
-		box-sizing: border-box; /* Incluye el padding en el tamaño total del elemento */
+		
 	}
 
 	.row {
@@ -259,7 +273,13 @@
 		margin: 0;
 		width: 100%;
 	}
-
+	.row-left {
+		display: flex;
+		align-items: flex-start;
+		justify-content: flex-start;
+		margin: 0;
+		width: 100%;
+	}
 	.nav-container {
 		width: 100%;
 		position: relative;
@@ -284,19 +304,9 @@
 		object-fit: cover; /* Asegura que la imagen cubra completamente el contenedor */
 	}
 
-
 	.scroll-section {
 		padding: 20px;
 	}
-
-
-    .text-p-left {
-		font-size: 2.5rem;
-		color: #000;
-		margin-top: 30px;
-        text-align: left;
-	}
-
 
 
 	.split-section {
@@ -305,82 +315,27 @@
 		width: 100%;
 		box-sizing: border-box;
 	}
+	.grid-container {
+		display: grid;
+		grid-template-columns: repeat(1, 1fr); /* 1 columna en móviles */
+		grid-template-rows: repeat(auto-fill, minmax(200px, 1fr)); /* Ajusta la altura de las filas */
+		gap: 20px;
+		margin: 0 auto;
 
-	.split-left,
-	.split-right {
-		flex: 1; /* Cada div ocupa el 50% del ancho en pantallas grandes */
-		display: flex;
-		align-items: center; /* Alinea el contenido verticalmente en el centro */
-		padding: 20px;
-		box-sizing: border-box;
-		text-align: left; /* Alinea el texto a la izquierda dentro del div */
-		gap: 10px; /* Espacio entre el texto y la imagen */
-		flex-wrap: wrap;
-	}
-
-	.split-left {
-		justify-content: center; /* Alinea el contenido al principio en pantallas grandes */
-	}
-
-	.split-right {
-		justify-content: center; /* Alinea el contenido al principio en pantallas grandes */
-	}
-
-	.split-left h2,
-	.split-right h2 {
-		font-size: clamp(1.5rem, 1vw, 2rem);
-		font-weight: 400;
-		letter-spacing: 0.2em;
-		color: #000;
-		margin: 0;
-	}
-
-
-
-	@media (max-width: 768px) {
-		.split-left,
-		.split-right {
-			flex-direction: column; /* Coloca el texto encima de la imagen en pantallas pequeñas */
-			align-items: center; /* Centra el contenido horizontalmente en pantallas pequeñas */
-			width: 100%; /* Cada div ocupa el 100% del ancho en pantallas pequeñas */
-			margin-bottom: 10px; /* Espacio entre los divs */
-			text-align: center; /* Centra el texto en pantallas pequeñas */
-		}
-
-		.split-left h2,
-		.split-right h2 {
-			margin-bottom: 10px; /* Espacio entre el texto y la imagen en pantallas pequeñas */
-			margin-right: 0; /* Elimina el margen derecho en pantallas pequeñas */
-		}
-	}
-	
-
-	.split-right {
-		display: flex;
-		padding: 20px;
-		text-align: left;
-		gap: 10px;
-		flex-wrap: wrap;
-
-		.grid-container {
-			display: grid;
-			grid-template-columns: repeat(2, 1fr); /* Dos columnas */
-			gap: 10px; /* Espacio entre los elementos */
-			width: 100%; /* Asegura que el grid ocupe todo el ancho */
-		}
 		@media (min-width: 768px) {
-			.grid-item {
-				padding: 10px;
-				font-size: 1.5rem;
-				color: #000;
-			}
+			grid-template-columns: repeat(3, 1fr); /* 3 columnas en pantallas grandes */
 		}
-		@media (max-width: 768px) {
-			.grid-item {
-				padding: 10px;
-				font-size: 1rem;
-				color: #000;
-			}
-		}
+	}
+	.section-heading {
+		margin-bottom: 10px;
+	}
+	.arrow-icon {
+		width: 30px; /* Ajusta el tamaño de la imagen */
+		height: auto; /* Mantiene la proporción de la imagen */
+		margin-top: 7px;
+	}
+	.img-division{
+		display: flex;
+		justify-content: center;
 	}
 </style>

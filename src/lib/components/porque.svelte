@@ -114,14 +114,14 @@
 			<div class="bg upper-row">
 				<!-- Row 1 -->
 				<div class="row" style="margin-bottom: 30px;">
-					<h3 class="section-heading">¿POR QUE SEX & PSICO?</h3>
+					<b><h3 class="section-heading">¿POR QUE SEX & PSICO?</h3></b>
 				</div>
 				<!-- Row 2 -->
 				<div class="row">
-					<h2 class="section-heading">
+					<h1 class="section-heading">
 						PORQUE PUEDES DISFRUTAR PLENAMENTE SIN TENER QUE ELEGIR ENTRE EL SEXO VAINILLA O EL
 						PORNO
-					</h2>
+					</h1>
 				</div>
 			</div>
 		</div>
@@ -134,21 +134,22 @@
 			<div class="bg">
 				<div class="split-section">
 					<div class="split-left">
-						<h2 class="text-p">
+						<b><h2 class="text-p">
 							SE TRATA DE CONOCERTE Y SABER QUÉ ES LO QUE TE GUSTA A TI. SIN COMPARARTE CON
 							ESTEREOTIPOS MITIFICADOS. SIN REPRIMIR TUS DESEOS Y TUS FANTASÍAS. SIN TENER
 							EXPECTATIVAS BASADAS EN LO QUE VES, LEES O ESCUCHAS.
-						</h2>
-						<h2 class="text-p">
+						</h2></b>
+						<b><h2 class="text-p">
 							PORQUE DISFRUTAS MÁS Y MEJOR, DENTRO Y FUERA DE LA CAMA, CUANDO PONES TU SEXUALIDAD EN
 							EL CENTRO DE TU VIDA.
-						</h2>
+						</h2></b>
 					</div>
 					<div class="split-right">
 						<div class="grid-container">
 							{#each gridItems as item}
 								<div class="grid-item">
-									{item.text}<img src="../content/arrow-index.png" alt="index" class="arrow-icon" />
+									{item.text}
+									<img src="../content/arrow-index.png" alt="index" class="arrow-icon" />
 								</div>
 							{/each}
 						</div>
@@ -207,23 +208,10 @@
 		padding: 20px; /* Añade relleno para asegurar que el contenido no se sobreponga */
 		box-sizing: border-box; /* Incluye el padding en el tamaño total del elemento */
 	}
-
-	.outer,
-	.inner,
-	.bg {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		width: 100%;
-		box-sizing: border-box; /* Incluye el padding en el tamaño total del elemento */
-	}
-
 	.row {
 		display: flex;
 		align-items: center;
-		justify-content: center;
-		text-align: center;
+		justify-content: flex-start;		
 		margin: 0;
 		width: 100%;
 	}
@@ -268,7 +256,7 @@
 	.split-right {
 		flex: 1; /* Cada div ocupa el 50% del ancho en pantallas grandes */
 		display: flex;
-		align-items: center; /* Alinea el contenido verticalmente en el centro */
+		align-items: flex-start;
 		padding: 20px;
 		box-sizing: border-box;
 		text-align: left; /* Alinea el texto a la izquierda dentro del div */
@@ -298,8 +286,7 @@
 			flex-direction: column; /* Coloca el texto encima de la imagen en pantallas pequeñas */
 			align-items: center; /* Centra el contenido horizontalmente en pantallas pequeñas */
 			width: 100%; /* Cada div ocupa el 100% del ancho en pantallas pequeñas */
-			margin-bottom: 10px; /* Espacio entre los divs */
-			text-align: center; /* Centra el texto en pantallas pequeñas */
+			margin-bottom: 10px; /* Espacio entre los divs */		
 		}
 
 	}
@@ -321,7 +308,7 @@
         @media (min-width: 768px) {
             .grid-item {
 			padding: 10px;
-			font-size: 1.5rem;
+			font-size: 1rem;
 			color: #000;
 		}
         }

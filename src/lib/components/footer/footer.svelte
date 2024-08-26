@@ -7,9 +7,9 @@
       
         <div class="footer-row info-row">
             <div class="column contact-info">
-                <div>Contacto:</div>
-                <div>Calle mayor 25, 07010, Palma de Mallorca</div>
-                <div>info@sedandpsico.com</div>
+                <h4>Contacto:</h4>
+                <h4>Calle mayor 25, 07010, Palma de Mallorca</h4>
+                <h4>info@sedandpsico.com</h4>
             </div>
             <div class="column about-info">
                 <div>Acerca de nosotros</div>

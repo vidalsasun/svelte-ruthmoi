@@ -120,18 +120,18 @@
 			<div class="bg upper-row">
 				<!-- Row 1 -->
 				<div class="row" style="margin-bottom: 30px;">
-					<h3 class="section-heading">MI HISTORIA</h3>
+					<b><h3 class="section-heading">MI HISTORIA</h3></b>
 				</div>
 				<!-- Row 2 -->
 				<div class="row">
-					<h2 class="section-heading">LOS ESPACIOS</h2>
+					<h1 class="section-heading">LOS ESPACIOS</h1>
 				</div>
 				<!-- Row 3 -->
 				<div class="row description" style="margin-top: 30px;">
-					<h3 class="section-heading">
+					<h2 class="section-heading">
 						NUESTRO OBJETIVO ES QUE CONOZCAS TU PERSONALIDAD SEXUAL PARA QUE DISFRUTES DE TI DENTRO
 						Y FUERA DE LA CAMA, PARA LOGRARLO, TE PROPONEMOS DIFERENTES CAMINOS.
-					</h3>
+					</h2>
 				</div>
 			</div>
 		</div>
@@ -157,12 +157,12 @@
 											<p class="card-title">{item.title}</p>
 											<p>{item.description}</p>
 										</div>
-										<div class="card-action">
+										<!-- <div class="card-action">
 											<a href="{base}/" class="button-text">MAS</a>
 											<button class="image-button">
 												<img src="../content/arrow-submit.png" alt="Más" />
 											</button>
-										</div>
+										</div> -->
 									</div>
 								</div>
 							</div>
@@ -211,27 +211,11 @@
 <style lang="scss">
 	
 	.upper-row {
-		margin-top: 50px;
-		margin-bottom: 50px;
-		height: 500px;
+	
+		height: 315px;
 	}
-	section {
-		width: 100%;
-		position: relative;
-		background-color: #fff;
-		padding: 20px; /* Añade relleno para asegurar que el contenido no se sobreponga */
-		box-sizing: border-box; /* Incluye el padding en el tamaño total del elemento */
-	}
-	.outer,
-	.inner,
-	.bg {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		width: 100%;
-		box-sizing: border-box; /* Incluye el padding en el tamaño total del elemento */
-	}
+
+	
 	.row {
 		display: flex;
 		align-items: center;

@@ -1,11 +1,16 @@
-<div class="split-left">
-    <p class="text-p">18 AÑOS DE EXPERIENCIA</p>
-    <img src="../content/arrow-index.png" alt="index" class="arrow-icon" />
-</div>
-<div class="split-right">
-    <p class="text-p">MÁS DE 5.000 VIDAS TRANSFORMADAS</p>
-    <img src="../content/arrow-index.png" alt="index" class="arrow-icon" />
-</div>
+
+
+    <div class="split-left">
+        <p class="card-title">18 AÑOS DE EXPERIENCIA</p>
+        <img src="../content/arrow-index.png" alt="index" class="arrow-icon" />
+    </div>
+    <div class="split-right">
+        <p class="card-title">MÁS DE 5.000 VIDAS TRANSFORMADAS</p>
+        <img src="../content/arrow-index.png" alt="index" class="arrow-icon" />
+    </div>
+
+
+
 
 <style lang="scss">
 .split-left,
