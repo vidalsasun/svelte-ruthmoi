@@ -17,7 +17,6 @@
 		box-sizing: border-box;
 		text-align: left; /* Alinea el texto a la izquierda dentro del div */
 		gap: 10px; /* Espacio entre el texto y la imagen */
-		width: 50%;
 	}
 
 	.split-left {

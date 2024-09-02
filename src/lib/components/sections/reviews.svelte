@@ -40,6 +40,7 @@ const messages = [
 		text-align: center; /* Alinea el texto al centro dentro del div */
 		gap: 10px; /* Espacio entre el texto y la imagen */
 		flex-wrap: wrap; /* Permite que el contenido se envuelva en pantallas pequeñas */
+		width: 50%;
 	}
 
 
