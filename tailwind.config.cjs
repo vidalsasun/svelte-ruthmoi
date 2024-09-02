@@ -9,7 +9,7 @@ const config = {
 	},
 
 	plugins: [require('daisyui')],
-	darkMode: 'false'
+	darkMode: 'class'
 };
 
 module.exports = config;

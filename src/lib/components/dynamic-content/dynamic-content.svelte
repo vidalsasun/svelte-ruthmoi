@@ -4,11 +4,6 @@
 	import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 	import { Observer } from 'gsap/dist/Observer';
 
-	let content = [
-		{ type: 'text', content: 'Noticia 1' },
-		{ type: 'text', content: 'Noticia 2' }
-	];
-
 	if (typeof window !== 'undefined') {
 		gsap.registerPlugin(ScrollTrigger);
 		gsap.registerPlugin(Observer);

@@ -72,17 +72,6 @@
     height: auto; /* Mantiene la proporción de la imagen */
 }
 
-.button-text {
-    position: absolute; /* Permite colocar el texto sobre la imagen */
-    top: 50%; /* Centra verticalmente el texto */
-    left: 5%; /* Centra horizontalmente el texto */
-    transform: translate(+20%, -70%); /* Ajusta la posición para centrar exactamente */
-    color: #000; /* Cambia el color del texto */
-    font-size: 1rem; /* Tamaño del texto */
-    font-weight: bold; /* Grosor del texto */
-    text-shadow: 1px 1px 2px black; /* Añade sombra al texto para mayor legibilidad */
-    pointer-events: none; /* Evita que el texto sea clicable, permitiendo que la imagen actúe como botón */
-}
 
 
 .info-row {

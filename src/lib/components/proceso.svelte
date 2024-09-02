@@ -321,7 +321,7 @@ import { onMount } from 'svelte';
 		grid-template-rows: repeat(auto-fill, minmax(200px, 1fr)); /* Ajusta la altura de las filas */
 		gap: 20px;
 		margin: 0 auto;
-
+		justify-items: center;
 		@media (min-width: 768px) {
 			grid-template-columns: repeat(3, 1fr); /* 3 columnas en pantallas grandes */
 		}
