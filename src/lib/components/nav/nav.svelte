@@ -50,7 +50,7 @@
 				close.addEventListener('click', closeMenu);
 
 				// Añadir listener a cada enlace
-				navLinks.forEach(link => {
+				navLinks.forEach((link) => {
 					link.addEventListener('click', closeMenu);
 				});
 			});
@@ -61,7 +61,7 @@
 <header class="header">
 	<div>
 		<a href="{base}/">
-			<img alt="SEXANDPSICO" src="{base}/nav-logo.png" style="width: 80%;padding-left: 5%;" /></a
+			<img alt="SEXANDPSICO" src="{base}/nav-logo.png" class="logo" /></a
 		>
 	</div>
 	<div class="container">
@@ -84,21 +84,20 @@
 
 <style lang="scss">
 	//CUSTOM
-	.header{
+	.header {
 		background-color: #fff;
 		position: fixed; /* Fija la navegación en la parte superior */
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 10; /* Asegura que la navegación esté por encima de otros contenidos */
-    background-color: #fff; /* Asegura que tenga un fondo si es necesario */
+		top: 0;
+		left: 0;
+		width: 100%;
+		z-index: 10; /* Asegura que la navegación esté por encima de otros contenidos */
+		background-color: #fff; /* Asegura que tenga un fondo si es necesario */
 	}
 
 	//CUSTOM
 
-
 	//NAVBAR
-	
+
 	.container {
 		cursor: pointer;
 		position: absolute;
@@ -107,28 +106,6 @@
 		height: 20px;
 	}
 
-	.bars {
-		width: 30px;
-		height: 4px;
-		background: #000;
-	}
-
-	.bars::before,
-	.bars::after {
-		content: '';
-		position: absolute;
-		width: 30px;
-		height: 4px;
-		background: #000;
-	}
-
-	.bars::before {
-		margin-top: 9px;
-	}
-
-	.bars::after {
-		margin-top: 18px;
-	}
 
 	nav {
 		position: absolute;
@@ -209,39 +186,95 @@
 	nav .close:hover div::after {
 		background: #000;
 	}
+	@media (max-width: 768px) {
+		.logo {
+			width: 80%;
+			padding-left: 5%;
+		}
+		.bars {
+		width: 30px;
+		height: 4px;
+		background: #000;
+	}
 
+	.bars::before,
+	.bars::after {
+		content: '';
+		position: absolute;
+		width: 30px;
+		height: 4px;
+		background: #000;
+	}
+
+	.bars::before {
+		margin-top: 9px;
+	}
+
+	.bars::after {
+		margin-top: 18px;
+	}
+
+
+	}
+	@media (min-width: 768px) {
+		.logo {
+			width: 100%;
+			padding-left: 5%;
+		}
+		.bars {
+		width: 50px;
+		height: 4px;
+		background: #000;
+	}
+
+	.bars::before,
+	.bars::after {
+		content: '';
+		position: absolute;
+		width: 50px;
+		height: 4px;
+		background: #000;
+	}
+
+	.bars::before {
+		margin-top: 9px;
+	}
+
+	.bars::after {
+		margin-top: 18px;
+	}
+
+		
+	}
 	///////////////////
-    /// 
-    /// 
-    /// 
-    
+	///
+	///
+	///
+
 	@media (min-width: 768px) {
 		header {
-		position: fixed;
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		width: 100%;
-		z-index: 3;
-		height: 4em;
-		font-family: 'Bebas Neue', sans-serif;
-		font-size: clamp(0.66rem, 2vw, 1rem);
-		letter-spacing: 0.5em;
-	}
+			position: fixed;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			width: 100%;
+			z-index: 3;
+			height: 4em;
+			font-size: clamp(0.66rem, 2vw, 1rem);
+			letter-spacing: 0.5em;
+		}
 	}
 	@media (max-width: 768px) {
 		header {
-		position: fixed;
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		width: 100%;
-		z-index: 3;
-		height: 6em;
-		font-family: 'Bebas Neue', sans-serif;
-		font-size: clamp(0.66rem, 2vw, 1rem);
-		letter-spacing: 0.5em;
+			position: fixed;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			width: 100%;
+			z-index: 3;
+			height: 6em;
+			font-size: clamp(0.66rem, 2vw, 1rem);
+			letter-spacing: 0.5em;
+		}
 	}
-	}
-
 </style>

@@ -1,12 +1,14 @@
 <script lang="ts">
-    import { onMount } from 'svelte';
+    import { onMount, onDestroy } from 'svelte';
     import gsap from 'gsap';
   
     export let messages = [];
     export let duration = 60; // Duración de la animación
   
     let pointElements = [];
-  
+    let currentIndex = 0;
+    let autoScrollInterval;
+
     onMount(() => {
       pointElements = Array.from(document.querySelectorAll(".nav-dot"));
   
@@ -32,8 +34,16 @@
   
       // Inicializar el primer punto como activo
       updateActivePoint(0);
+      
+      // Iniciar el desplazamiento automático
+      startAutoScroll();
     });
-  
+    
+    onDestroy(() => {
+      // Limpiar el intervalo cuando el componente se destruye
+      clearInterval(autoScrollInterval);
+    });
+
     function scrollToText(index) {
       const xPercent = -100 * index;
       gsap.to(".scroll-text", {
@@ -42,6 +52,10 @@
         ease: "power2.inOut"
       });
       updateActivePoint(index);
+      currentIndex = index;
+
+      // Reiniciar el desplazamiento automático
+      resetAutoScroll();
     }
   
     function updateActivePoint(index) {
@@ -53,14 +67,26 @@
         }
       });
     }
+
+    function startAutoScroll() {
+      autoScrollInterval = setInterval(() => {
+        currentIndex = (currentIndex + 1) % messages.length;
+        scrollToText(currentIndex);
+      }, 5000); // Cambia cada 5 segundos (ajustable)
+    }
+
+    function resetAutoScroll() {
+      clearInterval(autoScrollInterval);
+      startAutoScroll();
+    }
   </script>
   
   <div class="scroll-container">
     <div class="scroll-text">
       {#each messages as { message, user, age }}
         <div class="text-item">
-          <p>{message}</p>
-          <p>{user}, {age}</p>
+          <h2>{message}</h2>
+          <h2>{user}, {age}</h2>
         </div>
       {/each}
     </div>

@@ -148,7 +148,7 @@
 						<div class="grid-container">
 							{#each gridItems as item}
 								<div class="grid-item">
-									{item.text}
+									<h3 class="card-title">{item.text}</h3>
 									<img src="../content/arrow-index.png" alt="index" class="arrow-icon" />
 								</div>
 							{/each}

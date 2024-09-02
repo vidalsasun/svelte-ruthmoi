@@ -7,11 +7,11 @@
 		<b><h1 class="section-heading">SE TRATA DE SEXO REAL</h1></b>
 	</div>
 	<div class="row" style="margin-top: 30px;">
-		<h4 class="section-heading">
+		<h3 class="section-heading">
 			SEX AND PSICO NACE PARA RESOLVER TUS PROBLEMAS SEXUALES DESDE DENTRO: COMPRENDER QUÉ ES LO QUE
 			TÚ REALMENTE DESEAS, QUÉ ESPERAR DE CADA RELACIÓN Y COMO REENFOCAR TU VIDA SEXUAL PARA QUE
 			DISFRUTES AL 100%, SIN ADITIVOS.
-		</h4>
+		</h3>
 	</div>
 	<div class="row" style="margin-top: 30px;">
 		<button class="image-button">

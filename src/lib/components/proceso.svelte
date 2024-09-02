@@ -206,8 +206,8 @@ import { onMount } from 'svelte';
 								<div class="card-body">
 									<div class="card-content">
 										<div class="card-text">
-											<p class="card-title">{item.title}</p>
-											<p>{item.description}</p>
+											<h1 class="card-title">{item.title}</h1>
+											<h2>{item.description}</h2>
 										</div>
 										
 									</div>
@@ -338,4 +338,49 @@ import { onMount } from 'svelte';
 		display: flex;
 		justify-content: center;
 	}
+
+	.card {
+		width: 100%;
+		max-width: 100%; /* Evita que la tarjeta se expanda más allá del contenedor */
+		display: flex;
+		flex-direction: column; /* Permite que el contenido se ajuste verticalmente */
+	}
+
+	.card img {
+		border-radius: 0.5rem;
+		width: 100%; /* Asegura que la imagen se ajuste al ancho de la tarjeta */
+		height: auto;
+	}
+
+	.card-body {
+		display: flex;
+		flex-direction: column;
+		padding: 10px;
+		background-color: #fff;
+	}
+	.card-content {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		flex-wrap: wrap;
+	}
+	.card-text {
+		flex: 1; /* Toma todo el espacio disponible menos el de la acción */
+	}
+
+	.card-action {
+		display: flex;
+		align-items: center;
+		justify-content: flex-end; /* Alinea el enlace "Más" a la derecha */
+	}
+
+	.card-title {
+		font-size: 1.5rem; /* Tamaño del texto del título */
+		margin: 0;
+	}
+
+	.card-body p {
+		margin: 5px 0;
+	}
+
 </style>

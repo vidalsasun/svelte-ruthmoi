@@ -164,7 +164,6 @@
 
 <style lang="scss">
 	// SCROLL CONTENT
-	@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 	$bg-gradient: linear-gradient(180deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.3) 100%);
 

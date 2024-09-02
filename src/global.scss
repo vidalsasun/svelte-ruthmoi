@@ -1,32 +1,61 @@
 /* src/global.css */
 
-/* h1,
-h2,
-h3 {
-    font-weight: 400;  
-    letter-spacing: 0.2em;
-    color: #000;
-    margin: 0;
-} */
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kaisei+Opti:wght@400;500;700&family=Nanum+Myeongjo:wght@400;700;800&display=swap');
 
+
+/* .nanum-myeongjo-regular {
+    font-family: "Nanum Myeongjo", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .nanum-myeongjo-bold {
+    font-family: "Nanum Myeongjo", serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  .nanum-myeongjo-extrabold {
+    font-family: "Nanum Myeongjo", serif;
+    font-weight: 800;
+    font-style: normal;
+  } */
+
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: clamp(1.5rem, 2vw, 2rem);
+    }
+
+    h3 {
+        font-size: clamp(1rem, 3vw, 1rem);
+    }
+}
+
+@media (min-width: 768px) {
+    h1 {
+        font-size: clamp(2.8rem, 2vw, 2rem);
+    }
+
+    h3 {
+        font-size: clamp(1.5rem, 3vw, 1rem);
+    }
+}
 
 h2 {
     font-size: clamp(1rem, 1vw, 2rem);
 }
 
-h1 {
-    font-size: clamp(1.5rem, 2vw, 2rem);
-}
-
-h3 {
-    font-size: clamp(1rem, 3vw, 1rem);
-}
-
-h3 {
+h4 {
     font-size: clamp(0.8rem, 3vw, 0.7rem);
 }
 
-
+body {
+    font-family: "Kaisei Opti", serif;
+    font-weight: 400;
+    font-style: normal;
+}
 
 .outer,
 .inner,
@@ -35,26 +64,42 @@ h3 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
     @media (max-width: 768px) {
         width: 100%;
     }
+
     @media (min-width: 768px) {
         width: 85%;
     }
 
-    box-sizing: border-box;
+
     /* Incluye el padding en el tamaño total del elemento */
 }
 
+section
+{
+    display: flex;
+    justify-content: center;
+}
 
 .button-text {
-    position: absolute; /* Permite colocar el texto sobre la imagen */
-    top: 50%; /* Centra verticalmente el texto */
-    left: 26%; /* Centra horizontalmente el texto */
-    transform: translate(+20%, -70%); /* Ajusta la posición para centrar exactamente */
-    color: #000; /* Cambia el color del texto */
-    font-size: 1.5rem; /* Tamaño del texto */
-    font-weight: bold; /* Grosor del texto */
-    text-shadow: 1px 1px 2px black; /* Añade sombra al texto para mayor legibilidad */
-    pointer-events: none; /* Evita que el texto sea clicable, permitiendo que la imagen actúe como botón */
+    position: absolute;
+    /* Permite colocar el texto sobre la imagen */
+    top: 50%;
+    /* Centra verticalmente el texto */
+    left: 26%;
+    /* Centra horizontalmente el texto */
+    transform: translate(+20%, -70%);
+    /* Ajusta la posición para centrar exactamente */
+    color: #000;
+    /* Cambia el color del texto */
+    font-size: 1.5rem;
+    /* Tamaño del texto */
+    font-weight: bold;
+    /* Grosor del texto */
+    text-shadow: 1px 1px 2px black;
+    /* Añade sombra al texto para mayor legibilidad */
+    pointer-events: none;
+    /* Evita que el texto sea clicable, permitiendo que la imagen actúe como botón */
 }
